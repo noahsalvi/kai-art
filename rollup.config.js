@@ -10,7 +10,7 @@ import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
-import { preprocess as windi } from "svelte-windicss-preprocess";
+// import { preprocess as windi } from "svelte-windicss-preprocess";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -36,7 +36,10 @@ export default {
         },
       }),
       svelte({
-        preprocess: [sveltePreprocess({ sourceMap: dev }), windi()],
+        preprocess: [
+          sveltePreprocess({ sourceMap: dev, postcss: true }),
+          // windi({ config: "tailwind.config.js" }),
+        ],
         compilerOptions: {
           dev,
           hydratable: true,
@@ -99,7 +102,10 @@ export default {
         },
       }),
       svelte({
-        preprocess: [sveltePreprocess({ sourceMap: dev }), windi()],
+        preprocess: [
+          sveltePreprocess({ sourceMap: dev, postcss: true }),
+          // windi({ config: "tailwind.config.js" }),
+        ],
         compilerOptions: {
           dev,
           generate: "ssr",

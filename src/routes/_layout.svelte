@@ -1,10 +1,22 @@
 <script lang="ts">
-  import Counter from "../components/Counter.svelte";
+  import Tailwind from "../components/Tailwind.svelte";
+  import NavigationBar from "../components/NavigationBar/NavigationBar.svelte";
 
   export let segment: string;
+  segment;
 </script>
 
-<main>
-  <Counter />
-  <slot />
-</main>
+<Tailwind />
+
+<div class="max-w-7xl mx-auto">
+  <NavigationBar />
+  <main class=" mt-8">
+    <slot />
+  </main>
+</div>
+
+<style global>
+  html {
+    overflow-y: scroll;
+  }
+</style>
