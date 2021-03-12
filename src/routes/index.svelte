@@ -7,7 +7,7 @@
 </svelte:head>
 
 <h1
-  class="bg-green-300 ring ring-offset-gray-600 hover:(bg-black animate-pulse)"
+  class="bg-green-300 ring ring-offset-gray-600 text-xl ml-11 hover:(bg-black animate-pulse)"
 >
   Great success!
 </h1>
@@ -24,5 +24,11 @@
 </p>
 
 <style>
-  // :global()
+  h1 {
+    margin-top: 24px;
+  }
+
+  :global(body) {
+    background: gray;
+  }
 </style>
