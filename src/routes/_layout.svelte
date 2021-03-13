@@ -8,9 +8,9 @@
 
 <Tailwind />
 
-<div class="max-w-7xl mx-auto">
+<div class="max-w-7xl mx-auto min-h-full flex flex-col">
   <NavigationBar />
-  <main class=" mt-8">
+  <main class="flex-grow">
     <slot />
   </main>
 </div>
@@ -18,5 +18,11 @@
 <style global>
   html {
     overflow-y: scroll;
+  }
+
+  html,
+  body,
+  #sapper {
+    height: 100%;
   }
 </style>

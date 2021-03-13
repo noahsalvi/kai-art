@@ -3,14 +3,14 @@
 </script>
 
 <nav class="h-24 p-6 flex justify-between items-center">
-  <div class="flex items-end space-x-4 h-full">
+  <a href="/" class="flex items-end space-x-4 h-full">
     <img
       src="/logo.svg"
       alt="Logo"
       class="h-full max-h-full rounded-lg hover:text-opacity-25 transition-all"
     />
-    <h1 class="text-3xl font-thin">Kai Art & Design</h1>
-  </div>
+    <h1 class="text-3xl font-thin hidden sm:block">Kai Art & Design</h1>
+  </a>
 
   <ul class="flex space-x-5 items-end h-full">
     <li><NavigationLink path="/">Home</NavigationLink></li>

@@ -1,9 +1,36 @@
 <script>
   import { fly } from "svelte/transition";
+
+  const items = [
+    {
+      title: "Kakteen",
+      description: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet.`,
+      image: "/images/plant-2.png",
+      path: "/plant-2",
+    },
+    {
+      title: "Ringe",
+      description: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet.`,
+      image: "/images/plant-3.png",
+      path: "/rings",
+    },
+  ];
+
+  function isEven(number) {
+    return number % 2 === 0;
+  }
 </script>
 
 <div
-  class="bg-white rounded-tl-3xl rounded-tr-3xl p-20 space-y-10"
+  class="bg-white rounded-tl-3xl rounded-tr-3xl p-5 sm:p-20 space-y-10"
   transition:fly
 >
   <div class="relative">
@@ -19,35 +46,49 @@
       About Me
     </a>
   </div>
-  <section class="flex space-x-10 max-h-96">
-    <img
-      src="/images/plant-1.png"
-      alt="Plant 1"
-      class="flex-1 object-cover object-bottom"
-    />
-    <div class="flex-1">
-      <h1 class="font-semibold text-3xl">Kaktuse</h1>
-      <p class="">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet.
-      </p>
-    </div>
-  </section>
-  <section class="flex space-x-4 flex-row-reverse">
-    <img
-      src="/images/plant-2.png"
-      alt="Plant 2"
-      class="flex-1 object-cover object-bottom"
-    />
-    <p class="flex-1">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-      amet.
-    </p>
-  </section>
+
+  {#each items as item, index}
+    <section
+      class="flex gap-5 sm:gap-10 sm:{isEven(index)
+        ? 'flex-row'
+        : 'flex-row-reverse'} flex-col-reverse"
+    >
+      <a
+        href={item.path}
+        class="secondary mt-auto w-full sm:hidden sm:w-44 mx-auto"
+        >Mehr Ansehen</a
+      >
+      <div class="flex-1">
+        <img
+          src={item.image}
+          alt="Plant 1"
+          class="w-full max-h-60 sm:max-h-80 min-h-full object-cover object-bottom"
+        />
+      </div>
+      <div class="flex-1 flex flex-col">
+        <h1 class="font-semibold text-3xl">{item.title}</h1>
+        <p class="">
+          {item.description}
+        </p>
+        <div class="sm:m-3" />
+
+        <a
+          href={item.path}
+          class="secondary mt-auto w-full hidden sm:block sm:w-44 mx-auto"
+          >Mehr Ansehen</a
+        >
+      </div>
+    </section>
+  {/each}
 </div>
+
+<footer
+  transition:fly
+  class="h-56 p-5 sm:px-20 mb-8 bg-accent max-w-7xl mx-auto rounded-bl-3xl rounded-br-3xl"
+>
+  <div class="flex flex-col h-full">
+    <h1 class="text-2xl text-white">Interessiert an meinen Werken?</h1>
+    <h2 class="text-xl text-gray">Kontaktiere mich per Email</h2>
+    <div class="mt-auto text-white">&copy; 2021 Kai Mäder</div>
+  </div>
+</footer>
