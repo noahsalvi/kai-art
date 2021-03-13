@@ -2,7 +2,9 @@
   import NavigationLink from "./NavigationLink.svelte";
 </script>
 
-<nav class="h-24 p-6 flex justify-between items-center">
+<nav
+  class="h-24 p-6 flex justify-between items-center w-full max-w-7xl mx-auto"
+>
   <a href="/" class="flex items-end space-x-4 h-full">
     <img
       src="/logo.svg"

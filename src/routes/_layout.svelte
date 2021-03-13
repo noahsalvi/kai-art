@@ -8,7 +8,7 @@
 
 <Tailwind />
 
-<div class="max-w-7xl mx-auto min-h-full flex flex-col">
+<div class="min-h-full flex flex-col ">
   <NavigationBar />
   <main class="flex-grow">
     <slot />
