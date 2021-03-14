@@ -1,4 +1,6 @@
 <script context="module">
+  import { sotion } from "sotion";
+
   export async function preload() {
     sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
 
@@ -7,8 +9,6 @@
 </script>
 
 <script lang="ts">
-  import { sotion } from "sotion";
-  import BreadCrumb from "../../components/BreadCrumb.svelte";
   import { goto } from "@sapper/app";
 
   import { fadeIn, fadeOut } from "../../utils/pageFade";
