@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     content: ["./src/**/*.html", "./src/**/*.svelte"],
     options: {
-      safelist: ["flex-row", "flex-row-reverse"],
+      safelist: ["sm:flex-row", "sm:flex-row-reverse"],
     },
   },
   theme: {
