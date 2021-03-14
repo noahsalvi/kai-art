@@ -60,7 +60,9 @@
           >Mehr Ansehen</a
         >
 
-        <section class="flex-1 flex max-h-60 mt-5 sm:m-0 sm:max-h-96 bg-gray">
+        <section
+          class="flex-1 flex max-h-60 mt-5 sm:m-0 sm:max-h-96 bg-gray rounded-md overflow-hidden"
+        >
           <img
             src={item.image}
             alt="Plant 1"
