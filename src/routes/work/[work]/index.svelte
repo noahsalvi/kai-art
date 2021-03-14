@@ -3,7 +3,8 @@
 
   export async function preload({ params }) {
     sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
-    const { blocks } = await sotion.slugPage(params.work);
+    const { blocks, meta: workGroupMeta } = await sotion.slugPage(params.work);
+
     const parsedBlocks: any[] = JSON.parse(blocks);
     const tableId = parsedBlocks.find(
       (block) => block.type === "collection_view"
@@ -12,7 +13,7 @@
     sotion.setScope(tableId);
     let meta = await sotion.getScope();
 
-    return { meta, slug: params.work };
+    return { meta, workGroupMeta, slug: params.work };
   }
 </script>
 
@@ -20,11 +21,12 @@
   import { fadeIn, fadeOut } from "../../../utils/pageFade";
 
   export let meta: { Name: string; image: { url: string }[] }[];
+  export let workGroupMeta: any;
   export let slug: string;
 </script>
 
 <main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
-  <a href="/work">Werke</a> / <a href="">{slug}</a>
+  <a href="/work">Werke</a> / <span>{workGroupMeta.Name}</span>
 
   <div class="m-5" />
 

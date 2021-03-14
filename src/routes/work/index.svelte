@@ -1,6 +1,5 @@
 <script context="module">
   export async function preload() {
-    console.log("index");
     sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
 
     return { meta: await sotion.getScope() };
