@@ -1,5 +1,9 @@
+<script>
+  import { fadeIn, fadeOut } from "../utils/pageFade";
+</script>
+
 <svelte:head>
-	<title>About</title>
+  <title>Portrait</title>
 </svelte:head>
 
 <h1>About this site</h1>

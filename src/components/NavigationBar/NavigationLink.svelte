@@ -5,7 +5,8 @@
 
   const { page } = stores();
 
-  $: isActive = $page.path === path;
+  $: isActive =
+    path === "/" ? $page.path === path : $page.path.startsWith(path);
 </script>
 
 <a

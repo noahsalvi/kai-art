@@ -1,4 +1,5 @@
 <script>
+  import { fadeIn, fadeOut } from "../utils/pageFade";
   const items = [
     {
       title: "Kakteen",
@@ -27,7 +28,11 @@
   }
 </script>
 
-<main class="bg-white rounded-tl-3xl rounded-tr-3xl">
+<svelte:head>
+  <title>Kai Art & Design</title>
+</svelte:head>
+
+<main class="bg-white rounded-tl-3xl rounded-tr-3xl" in:fadeIn out:fadeOut>
   <section class="max-w-7xl mx-auto p-5 sm:p-20 space-y-10">
     <div class="relative">
       <img

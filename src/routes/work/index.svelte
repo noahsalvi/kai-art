@@ -10,11 +10,16 @@
 
 <script lang="ts">
   import { goto } from "@sapper/app";
+  import { fadeIn, fadeOut } from "../../utils/pageFade";
 
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
 </script>
 
-<main class="max-w-7xl mx-auto px-20">
+<svelte:head>
+  <title>Werke</title>
+</svelte:head>
+
+<main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
   <a href="/work">Werke</a>
 
   <div class="m-5" />
@@ -28,7 +33,7 @@
         on:click={() => goto("work/" + workGroup.slug)}
       >
         <div
-          class="bg-white rounded-xl overflow-hidden shadow border-2 border-background hover:shadow-xl transition"
+          class="bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition"
         >
           <img
             class="h-96 w-full object-cover"
