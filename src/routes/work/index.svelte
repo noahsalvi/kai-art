@@ -11,12 +11,10 @@
   import BreadCrumb from "../../components/BreadCrumb.svelte";
   import { goto } from "@sapper/app";
 
-  import { fadeIn, fadeOut } from "../../utils/pageFade";
-
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
 </script>
 
-<main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
+<main class="max-w-7xl mx-auto px-20">
   <a href="/work">Werke</a>
 
   <div class="m-5" />

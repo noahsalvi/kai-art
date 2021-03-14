@@ -18,13 +18,11 @@
 </script>
 
 <script lang="ts">
-  import { fadeIn, fadeOut } from "../../../utils/pageFade";
-
   export let meta: { Name: string; image: { url: string }[] }[];
   export let workGroupMeta: any;
 </script>
 
-<main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
+<main class="max-w-7xl mx-auto px-20">
   <a href="/work">Werke</a> / <span>{workGroupMeta.Name}</span>
 
   <div class="m-5" />
