@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-  // import { goto } from "@sapper/app";
+  import { goto } from "@sapper/app";
 
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
 </script>
@@ -25,14 +25,14 @@
     {#each meta as workGroup}
       <article
         class="flex flex-col cursor-pointer"
-        on:click={() => console.log("work/" + workGroup.slug)}
+        on:click={() => goto("work/" + workGroup.slug)}
       >
         <div
           class="bg-white rounded-xl overflow-hidden shadow border-2 border-background hover:shadow-xl transition"
         >
           <img
             class="h-96 w-full object-cover"
-            src={workGroup.image?.[0].url}
+            src={workGroup.image && workGroup.image[0].url}
             alt={workGroup.Name}
           />
         </div>
