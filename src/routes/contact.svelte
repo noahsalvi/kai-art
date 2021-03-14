@@ -18,13 +18,13 @@
 </pre> -->
 
 <Page>
-  <div class="bg-white rounded-lg flex p-10 h-full">
-    <div class="flex-flex-col">
+  <div class="bg-white rounded-lg flex p-10 h-full justify-between">
+    <div class="flex flex-col">
       <Sotion {blocks} />
-      <a href="kai@mäder.ch" class="secondary">Email verfassen</a>
+      <a href="kai@mäder.ch" class="secondary mt-auto">Email verfassen</a>
     </div>
     <div>
-      <img src="" alt="" />
+      <img src="images/weed.png" alt="Kai" />
     </div>
   </div>
 </Page>
