@@ -22,6 +22,7 @@
 <script lang="ts">
   import { fadeIn, fadeOut } from "../../../utils/pageFade";
   import { goto } from "@sapper/app";
+  import Page from "../../../components/Page.svelte";
 
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
   export let workGroupMeta: { Name: string; slug: string };
@@ -31,7 +32,7 @@
   <title>{workGroupMeta.Name}</title>
 </svelte:head>
 
-<main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
+<Page>
   <a href="/work">Werke</a> / <span>{workGroupMeta.Name}</span>
 
   <div class="m-5" />
@@ -57,4 +58,4 @@
       </article>
     {/each}
   </section>
-</main>
+</Page>

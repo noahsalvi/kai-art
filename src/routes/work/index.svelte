@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import { goto } from "@sapper/app";
-  import { fadeIn, fadeOut } from "../../utils/pageFade";
+  import Page from "../../components/Page.svelte";
 
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
 </script>
@@ -19,7 +19,7 @@
   <title>Werke</title>
 </svelte:head>
 
-<main class="max-w-7xl mx-auto px-20" in:fadeIn out:fadeOut>
+<Page>
   <a href="/work">Werke</a>
 
   <div class="m-5" />
@@ -45,4 +45,4 @@
       </article>
     {/each}
   </section>
-</main>
+</Page>

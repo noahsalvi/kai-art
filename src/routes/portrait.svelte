@@ -1,7 +1,3 @@
-<script>
-  import { fadeIn, fadeOut } from "../utils/pageFade";
-</script>
-
 <svelte:head>
   <title>Portrait</title>
 </svelte:head>
