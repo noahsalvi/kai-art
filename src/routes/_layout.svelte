@@ -1,6 +1,13 @@
+<script context="module">
+  export function preload() {
+    sotion.setFetch(this.fetch);
+  }
+</script>
+
 <script lang="ts">
   import Tailwind from "../components/Tailwind.svelte";
   import NavigationBar from "../components/NavigationBar/NavigationBar.svelte";
+  import { sotion } from "sotion";
 
   export let segment: string;
   segment;
@@ -10,9 +17,9 @@
 
 <div class="min-h-full flex flex-col ">
   <NavigationBar />
-  <main class="flex-grow">
+  <div class="flex-grow">
     <slot />
-  </main>
+  </div>
 </div>
 
 <style global>

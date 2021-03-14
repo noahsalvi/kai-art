@@ -1,5 +1,5 @@
 <script>
-  import { fly } from "svelte/transition";
+  import { fadeIn, fadeOut } from "../utils/pageFade";
 
   const items = [
     {
@@ -29,8 +29,8 @@
   }
 </script>
 
-<div class="bg-white rounded-tl-3xl rounded-tr-3xl ">
-  <section class="max-w-7xl mx-auto p-5 sm:p-20 space-y-10" transition:fly>
+<main class="bg-white rounded-tl-3xl rounded-tr-3xl" in:fadeIn out:fadeOut>
+  <section class="max-w-7xl mx-auto p-5 sm:p-20 space-y-10">
     <div class="relative">
       <img
         src="/images/header.png"
@@ -84,9 +84,9 @@
       </article>
     {/each}
   </section>
-</div>
+</main>
 
-<footer transition:fly class="h-56 bg-accent">
+<footer in:fadeIn out:fadeOut class="h-56 bg-accent">
   <div class="max-w-7xl mx-auto h-full p-5 sm:px-20">
     <div class="flex flex-col h-full">
       <h1 class="text-2xl text-white">Interessiert an meinen Werken?</h1>

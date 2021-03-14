@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     content: ["./src/**/*.html", "./src/**/*.svelte"],
     options: {
-      safelist: [],
+      safelist: ["flex-row", "flex-row-reverse"],
     },
   },
   theme: {
@@ -11,6 +11,7 @@ module.exports = {
       background: "#F5F5F5",
       gray: "#808080",
       white: "white",
+      smoke: "whitesmoke",
       black: "black",
     },
     fontFamily: {
