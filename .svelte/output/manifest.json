@@ -1,0 +1,154 @@
+{
+  ".svelte/build/runtime/internal/start.js": {
+    "file": "start-faa40d03.js",
+    "src": ".svelte/build/runtime/internal/start.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor-499072eb.js",
+      "_singletons-6b53f818.js"
+    ],
+    "dynamicImports": [
+      "src/routes/$layout.svelte",
+      ".svelte/build/components/error.svelte",
+      "src/routes/index.svelte",
+      "src/routes/oldindex.svelte",
+      "src/routes/portrait.svelte",
+      "src/routes/contact.svelte",
+      "src/routes/work/index.svelte",
+      "src/routes/work/[workGroup]/index.svelte",
+      "src/routes/work/[workGroup]/[work].svelte"
+    ],
+    "css": [
+      "assets/start-25a78b07.css"
+    ]
+  },
+  "src/routes/$layout.svelte": {
+    "file": "pages/$layout.svelte-edde3fee.js",
+    "src": "src/routes/$layout.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js"
+    ],
+    "css": [
+      "assets/pages/$layout.svelte-b040365a.css"
+    ]
+  },
+  ".svelte/build/components/error.svelte": {
+    "file": "error.svelte-ab25880d.js",
+    "src": ".svelte/build/components/error.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js"
+    ]
+  },
+  "src/routes/index.svelte": {
+    "file": "pages/index.svelte-18aea9fb.js",
+    "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js"
+    ],
+    "css": [
+      "assets/pages/index.svelte-1fb08a4b.css"
+    ]
+  },
+  "src/routes/oldindex.svelte": {
+    "file": "pages/oldindex.svelte-bd206c41.js",
+    "src": "src/routes/oldindex.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js",
+      "_pageFade-a3c22aee.js"
+    ]
+  },
+  "src/routes/portrait.svelte": {
+    "file": "pages/portrait.svelte-aa0cabab.js",
+    "src": "src/routes/portrait.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js"
+    ]
+  },
+  "src/routes/contact.svelte": {
+    "file": "pages/contact.svelte-b7a991a4.js",
+    "src": "src/routes/contact.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js",
+      "_Page-c9a1afca.js",
+      "_pageFade-a3c22aee.js"
+    ],
+    "css": [
+      "assets/pages/contact.svelte-07cb140d.css"
+    ]
+  },
+  "src/routes/work/index.svelte": {
+    "file": "pages/work/index.svelte-d7cab62b.js",
+    "src": "src/routes/work/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js",
+      "_navigation-9e49acea.js",
+      "_Page-c9a1afca.js",
+      "_singletons-6b53f818.js",
+      "_pageFade-a3c22aee.js"
+    ]
+  },
+  "src/routes/work/[workGroup]/index.svelte": {
+    "file": "pages/work/[workGroup]/index.svelte-2183e036.js",
+    "src": "src/routes/work/[workGroup]/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js",
+      "_navigation-9e49acea.js",
+      "_Page-c9a1afca.js",
+      "_singletons-6b53f818.js",
+      "_pageFade-a3c22aee.js"
+    ]
+  },
+  "src/routes/work/[workGroup]/[work].svelte": {
+    "file": "pages/work/[workGroup]/[work].svelte-17e692d0.js",
+    "src": "src/routes/work/[workGroup]/[work].svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-499072eb.js"
+    ]
+  },
+  "_vendor-499072eb.js": {
+    "file": "chunks/vendor-499072eb.js",
+    "css": [
+      "assets/vendor-025bd988.css"
+    ]
+  },
+  "_singletons-6b53f818.js": {
+    "file": "chunks/singletons-6b53f818.js"
+  },
+  "_pageFade-a3c22aee.js": {
+    "file": "chunks/pageFade-a3c22aee.js",
+    "imports": [
+      "_vendor-499072eb.js"
+    ]
+  },
+  "_Page-c9a1afca.js": {
+    "file": "chunks/Page-c9a1afca.js",
+    "imports": [
+      "_vendor-499072eb.js",
+      "_pageFade-a3c22aee.js"
+    ]
+  },
+  "_navigation-9e49acea.js": {
+    "file": "chunks/navigation-9e49acea.js",
+    "imports": [
+      "_singletons-6b53f818.js"
+    ]
+  }
+}

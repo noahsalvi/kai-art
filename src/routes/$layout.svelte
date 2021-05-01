@@ -35,6 +35,11 @@
 </div>
 
 <style global>
+  html,
+  body,
+  #svelte {
+    height: 100%;
+  }
   .white-border {
     box-shadow: 0 0 0 0.6em #655;
   }
