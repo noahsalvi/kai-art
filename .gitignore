@@ -1,7 +1,5 @@
 .DS_Store
-/node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/__sapper__/
-functions/render/build
-my-app
+node_modules
+/.svelte
+/build
+/functions
