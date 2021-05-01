@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
   import { sotion } from "sotion";
 
-  export async function preload({ params }) {
+  export async function load({ page }) {
     sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
     const { blocks, meta: workGroupMeta } = await sotion.slugPage(
-      params.workGroup
+      page.params.workGroup
     );
 
     const parsedBlocks: any[] = JSON.parse(blocks);
@@ -15,14 +15,14 @@
     sotion.setScope(tableId);
     let meta = await sotion.getScope();
 
-    return { meta, workGroupMeta, slug: params.work };
+    return { props: { meta, workGroupMeta, slug: page.params.work } };
   }
 </script>
 
 <script lang="ts">
   import { fadeIn, fadeOut } from "../../../utils/pageFade";
-  import { goto } from "@sapper/app";
-  import Page from "../../../components/Page.svelte";
+  import { goto } from "$app/navigation";
+  import Page from "../../../lib/Page.svelte";
 
   export let meta: { Name: string; slug: string; image: { url: string }[] }[];
   export let workGroupMeta: { Name: string; slug: string };

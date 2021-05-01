@@ -1,102 +1,92 @@
 <script>
-  import { fadeIn, fadeOut } from "../utils/pageFade";
-  const items = [
-    {
-      title: "Kakteen",
-      description: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet.`,
-      image: "/images/plant-2.png",
-      path: "/plant-2",
-    },
-    {
-      title: "Ringe",
-      description: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet.`,
-      image: "/images/plant-3.png",
-      path: "/rings",
-    },
-  ];
-
-  function isEven(number) {
-    return number % 2 === 0;
-  }
+  import Hambuger from "$lib/landing/Hambuger.svelte";
 </script>
 
-<svelte:head>
-  <title>Kai Art & Design</title>
-</svelte:head>
-
-<main class="bg-white rounded-tl-3xl rounded-tr-3xl" in:fadeIn out:fadeOut>
-  <section class="max-w-7xl mx-auto p-5 sm:p-20 space-y-10">
-    <div class="relative">
+<main class="flex-grow flex relative">
+  <!-- Mobile aslant top -->
+  <nav
+    class="w-130 h-full bg-primary -md:(w-full absolute bottom-0 h-auto z-10)"
+  >
+    <!-- Mobile Nav -->
+    <nav class="md:hidden">
       <img
-        src="/images/header.png"
-        alt="Header"
-        class="w-full h-72 object-cover object-top"
+        class="ml-auto mr-10 mb-5 w-12"
+        src="icons/hamburger.svg"
+        alt="Menu"
       />
-      <a
-        href="/portrait"
-        class="absolute bottom-0 right-0 py-2 px-3 rounded-tl bg-white"
-      >
-        About Me
-      </a>
+    </nav>
+
+    <div class="m-10" />
+
+    <div
+      class="flex justify-center items-center space-x-4 text-2xl sm:text-3xl md:text-lg"
+    >
+      <a class="text-smoke">Email</a>
+      <div class="bg-smoke rounded-full w-1 h-1" />
+      <a class="text-smoke">Tel</a>
+      <div class="bg-smoke rounded-full w-1 h-1" />
+      <a class="text-smoke">Instagram</a>
     </div>
 
-    {#each items as item, index}
-      <article
-        class="flex flex-col-reverse sm:{isEven(index)
-          ? 'flex-row'
-          : 'flex-row-reverse'}"
-      >
-        <a
-          href={item.path}
-          class="secondary mt-5 sm:m-0 w-full sm:hidden sm:w-44 mx-auto"
-          >Mehr Ansehen</a
+    <div class="m-10 md:m-52" />
+
+    <ul class="flex flex-col items-center space-y-8 -md:hidden">
+      <li>
+        <a class="text-smoke text-5xl font-light" href="work"
+          ><strike>Werke</strike></a
         >
-
-        <section
-          class="flex-1 flex max-h-60 mt-5 sm:m-0 sm:max-h-96 bg-gray rounded-md overflow-hidden"
+      </li>
+      <li>
+        <a class="text-smoke text-5xl" href="portrait"
+          ><strike>Portrait</strike></a
         >
-          <img
-            src={item.image}
-            alt="Plant 1"
-            class="w-full max-h-full object-cover object-bottom"
-          />
-        </section>
+      </li>
+      <li>
+        <a class="text-smoke text-5xl" href="contact"
+          ><strike>Kontakt</strike></a
+        >
+      </li>
+    </ul>
+  </nav>
 
-        <div class="sm:m-5" />
-
-        <section class="flex-1 flex flex-col">
-          <h1 class="font-semibold text-3xl">{item.title}</h1>
-          <p class="">
-            {item.description}
-          </p>
-
-          <div class="sm:m-3" />
-
-          <a
-            href={item.path}
-            class="secondary mt-auto w-full hidden sm:block sm:w-44 mx-auto"
-            >Mehr Ansehen</a
-          >
-        </section>
-      </article>
-    {/each}
+  <section class="h-full flex-grow bg-gray relative">
+    <img
+      src="images/flex.png"
+      alt="Kai"
+      class="absolute h-full w-full object-cover"
+    />
+    <h1
+      class="z-20 absolute bottom-48 w-full text-center md:(w-auto bottom-7 text-8xl right-0) text-4xl  lg:(text-9xl) whitespace-nowrap text-smoke"
+    >
+      Kai Art & Design
+    </h1>
   </section>
 </main>
 
-<footer class="h-56 bg-accent">
-  <div class="max-w-7xl mx-auto h-full p-5 sm:px-20">
-    <div class="flex flex-col h-full">
-      <h1 class="text-2xl text-white">Interessiert an meinen Werken?</h1>
-      <h2 class="text-xl text-gray">Kontaktiere mich per Email</h2>
-      <div class="mt-auto text-white">&copy; 2021 Kai Mäder</div>
-    </div>
-  </div>
-</footer>
+<style global>
+  nav {
+    position: relative;
+  }
+  nav::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    top: 0;
+    z-index: -1;
+    transform-origin: bottom left;
+    transform: skewY(-8deg);
+  }
+  body {
+    @apply bg-primary !important;
+  }
+
+  strike {
+    text-decoration-thickness: 3px;
+  }
+
+  .w-menu {
+    width: 500px;
+  }
+</style>
