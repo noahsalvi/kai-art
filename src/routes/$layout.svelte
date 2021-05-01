@@ -13,31 +13,28 @@
   import { page } from "$app/stores";
 
   const { path } = $page;
+
+  let navigationBar: HTMLElement;
 </script>
 
+<!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
 <div class="w-full h-full bg-gray rounded-xl p-2">
-  <div
-    class="h-full bg-white min-h-full rounded-xl overflow-hidden flex flex-col"
-  >
+  <div class="h-full bg-white min-h-full rounded-xl overflow-hidden">
     {#if path !== "/"}
-      <NavigationBar />
+      <div bind:this={navigationBar}>
+        <NavigationBar />
+      </div>
     {/if}
-
-    <slot />
+    <div
+      class="overflow-auto"
+      style="height: calc(100% - {navigationBar?.clientHeight ?? 0}px);"
+    >
+      <slot />
+    </div>
   </div>
 </div>
 
 <style global>
-  /* html {
-    overflow-y: scroll;
-  } */
-
-  html,
-  body,
-  #svelte {
-    height: 100%;
-  }
-
   .white-border {
     box-shadow: 0 0 0 0.6em #655;
   }

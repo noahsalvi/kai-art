@@ -1,8 +1,11 @@
 <script>
   import Hambuger from "$lib/landing/Hambuger.svelte";
+
+  // Needed because safari doesnt allow using 100% height in child of flex grown item
+  let mainElement;
 </script>
 
-<main class="flex-grow flex relative">
+<main class="h-full min-h-150 flex relative" bind:this={mainElement}>
   <!-- Mobile aslant top -->
   <nav
     class="w-130 h-full bg-primary -md:(w-full absolute bottom-0 h-auto z-10)"
@@ -49,7 +52,10 @@
     </ul>
   </nav>
 
-  <section class="h-full flex-grow bg-gray relative">
+  <section
+    class="h-full flex-grow bg-gray relative"
+    style="height: {mainElement?.clientHeight}px;"
+  >
     <img
       src="images/flex.png"
       alt="Kai"
