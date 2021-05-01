@@ -34,7 +34,7 @@
 
   html,
   body,
-  #sapper {
+  #svelte {
     height: 100%;
   }
 
