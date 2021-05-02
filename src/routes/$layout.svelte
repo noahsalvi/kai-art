@@ -18,7 +18,7 @@
 </script>
 
 <!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
-<div class="w-full h-full bg-gray rounded-xl p-2">
+<div class="w-full h-full bg-gray rounded-xl p-1">
   <div class="h-full bg-white min-h-full rounded-xl overflow-hidden">
     {#if path !== "/"}
       <div bind:clientHeight={navigationBarHeight}>

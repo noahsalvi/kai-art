@@ -11,7 +11,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ["Gilda Display", "serif"],
+      sans: ["Cinzel Decorative", "serif"],
     },
   },
 };

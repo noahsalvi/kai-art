@@ -1,27 +1,36 @@
-<script>
-  import Hambuger from "$lib/landing/Hambuger.svelte";
-
+<script lang="ts">
+  import MobileNav from "$lib/landing/MobileNav.svelte";
+  import { tick } from "svelte";
+  let showMobileNav;
   let mainHeight;
+  let openMobileNavButton: HTMLImageElement;
+
+  async function toggleMobileNav() {
+    await tick();
+    showMobileNav = !showMobileNav;
+  }
 </script>
 
 <main class="h-full min-h-150 flex relative" bind:clientHeight={mainHeight}>
   <!-- Mobile aslant top -->
   <nav
-    class="w-130 h-full bg-primary -md:(w-full absolute bottom-0 h-auto z-10)"
+    class="w-110 h-full bg-primary -md:(w-full absolute bottom-0 h-auto z-10)"
   >
-    <!-- Mobile Nav -->
-    <nav class="md:hidden">
+    <!-- Hamburger for Mobile Nav -->
+    <nav class="mr-10 mb-5 md:hidden">
       <img
-        class="ml-auto mr-10 mb-5 w-12"
+        bind:this={openMobileNavButton}
+        class="w-12 ml-auto transform transition active:(scale-120 bg-red)"
         src="icons/hamburger.svg"
         alt="Menu"
+        on:click={toggleMobileNav}
       />
     </nav>
 
     <div class="m-10" />
 
     <div
-      class="flex justify-center items-center space-x-4 text-2xl sm:text-3xl md:text-lg"
+      class="flex justify-center items-center space-x-4 text-xl sm:text-2xl md:text-lg"
     >
       <a class="text-smoke">Email</a>
       <div class="bg-smoke rounded-full w-1 h-1" />
@@ -32,21 +41,15 @@
 
     <div class="m-10 md:m-52" />
 
-    <ul class="flex flex-col items-center space-y-8 -md:hidden">
+    <ul class="flex flex-col items-center space-y-8 -md:hidden text-3xl">
       <li>
-        <a class="text-smoke text-5xl font-light" href="work"
-          ><strike>Werke</strike></a
-        >
+        <a class="navigation-item" href="work">Werke</a>
       </li>
       <li>
-        <a class="text-smoke text-5xl" href="portrait"
-          ><strike>Portrait</strike></a
-        >
+        <a class="navigation-item" href="portrait">Portrait</a>
       </li>
       <li>
-        <a class="text-smoke text-5xl" href="contact"
-          ><strike>Kontakt</strike></a
-        >
+        <a class="navigation-item" href="contact">Kontakt</a>
       </li>
     </ul>
   </nav>
@@ -61,14 +64,21 @@
       class="absolute h-full w-full object-cover"
     />
     <h1
-      class="z-20 absolute bottom-48 w-full text-center md:(w-auto bottom-7 text-8xl right-0) text-4xl  lg:(text-9xl) whitespace-nowrap text-smoke"
+      class="z-20 absolute bottom-48 w-full text-center md:(w-auto bottom-7 text-7xl right-0) text-4xl lg:(text-8xl) whitespace-nowrap text-smoke"
     >
       Kai Art & Design
     </h1>
   </section>
+
+  <MobileNav
+    modalClass="absolute bottom-50 right-10 transform"
+    bind:open={showMobileNav}
+    {openMobileNavButton}
+  />
 </main>
 
 <style global>
+  /* Mobile Nav Slanted Top */
   nav {
     position: relative;
   }
@@ -84,14 +94,10 @@
     transform: skewY(-8deg);
   }
   body {
-    @apply bg-primary !important;
+    @apply !bg-primary;
   }
 
-  strike {
-    text-decoration-thickness: 3px;
-  }
-
-  .w-menu {
-    width: 500px;
+  .navigation-item {
+    @apply text-smoke block line-through transform transition duration-150 hover:(text-white no-underline text-red scale-120 animate-pulse);
   }
 </style>
