@@ -1,5 +1,3 @@
-import { tick } from "svelte";
-
 export function clickOutside(node: Node, callback: Function) {
   addEventListener("click", handleClick);
 

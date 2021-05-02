@@ -1,14 +1,9 @@
 <script lang="ts">
   import MobileNav from "$lib/landing/MobileNav.svelte";
-  import { tick } from "svelte";
+
   let showMobileNav;
   let mainHeight;
   let openMobileNavButton: HTMLImageElement;
-
-  async function toggleMobileNav() {
-    await tick();
-    showMobileNav = !showMobileNav;
-  }
 </script>
 
 <main class="h-full min-h-150 flex relative" bind:clientHeight={mainHeight}>
@@ -23,7 +18,7 @@
         class="w-12 ml-auto transform transition active:(scale-120 bg-red)"
         src="icons/hamburger.svg"
         alt="Menu"
-        on:click={toggleMobileNav}
+        on:click={() => (showMobileNav = !showMobileNav)}
       />
     </nav>
 
