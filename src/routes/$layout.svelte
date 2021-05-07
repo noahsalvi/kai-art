@@ -16,9 +16,7 @@
   let navigationBarHeight: number;
 
   $: path = $page.path;
-  $: contentHeight = `height: calc(100% - 
-  ${path !== "/" ? navigationBarHeight ?? 0 : 0}
-    px);`;
+  $: navigationBarInset = path !== "/" ? navigationBarHeight ?? 0 : 0;
 </script>
 
 <!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
@@ -28,7 +26,10 @@
       <NavigationBar bind:path />
     {/if}
   </div>
-  <div class="overflow-auto" style={contentHeight}>
+  <div
+    class="overflow-auto"
+    style="height: calc(100% - {navigationBarInset}px);"
+  >
     <slot />
   </div>
 </WebsiteBorder>
