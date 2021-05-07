@@ -1,5 +1,8 @@
 <script>
   import NavigationLink from "./NavigationLink.svelte";
+  export let path;
+
+  $: darkTheme = ["/work"].includes(path);
 </script>
 
 <nav
@@ -11,10 +14,14 @@
       alt="Logo"
       class="h-full max-h-full rounded-lg hover:text-opacity-25 transition-all"
     />
-    <h1 class="text-3xl font-thin hidden sm:block">Kai Art & Design</h1>
+    <h1
+      class="text-3xl font-thin hidden {darkTheme ? 'text-white' : ''} sm:block"
+    >
+      Kai Art & Design
+    </h1>
   </a>
 
-  <ul class="flex space-x-5 items-end h-full">
+  <ul class="flex space-x-5 items-end h-full text-white">
     <li><NavigationLink path="/">Home</NavigationLink></li>
     <li><NavigationLink path="/work">Werke</NavigationLink></li>
     <li><NavigationLink path="/portrait">Portrait</NavigationLink></li>

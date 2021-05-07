@@ -27,11 +27,15 @@
     <div
       class="flex justify-center items-center space-x-4 text-xl sm:text-2xl md:text-lg"
     >
-      <a class="text-smoke">Email</a>
+      <a class="text-smoke hover:text-white" href="mailto:kai@email">Email</a>
       <div class="bg-smoke rounded-full w-1 h-1" />
-      <a class="text-smoke">Tel</a>
+      <a class="text-smoke hover:text-white" href="tel:0790000000">Tel</a>
       <div class="bg-smoke rounded-full w-1 h-1" />
-      <a class="text-smoke">Instagram</a>
+      <a
+        class="text-smoke hover:text-white"
+        href="https://instagram.com/kai_nicolai"
+        target="_blank">Instagram</a
+      >
     </div>
 
     <div class="m-10 md:m-52" />
@@ -89,7 +93,7 @@
     transform: skewY(-8deg);
   }
   body {
-    @apply !bg-primary;
+    @apply bg-primary;
   }
 
   .navigation-item {

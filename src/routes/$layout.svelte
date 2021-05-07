@@ -11,28 +11,27 @@
 <script lang="ts">
   import NavigationBar from "../lib/navigationBar/NavigationBar.svelte";
   import { page } from "$app/stores";
-
-  const { path } = $page;
+  import WebsiteBorder from "$lib/WebsiteBorder.svelte";
 
   let navigationBarHeight: number;
+
+  $: path = $page.path;
+  $: contentHeight = `height: calc(100% - 
+  ${path !== "/" ? navigationBarHeight ?? 0 : 0}
+    px);`;
 </script>
 
 <!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
-<div class="w-full h-full bg-gray rounded-xl p-1">
-  <div class="h-full bg-white min-h-full rounded-xl overflow-hidden">
+<WebsiteBorder bind:path>
+  <div bind:clientHeight={navigationBarHeight}>
     {#if path !== "/"}
-      <div bind:clientHeight={navigationBarHeight}>
-        <NavigationBar />
-      </div>
+      <NavigationBar bind:path />
     {/if}
-    <div
-      class="overflow-auto"
-      style="height: calc(100% - {navigationBarHeight ?? 0}px);"
-    >
-      <slot />
-    </div>
   </div>
-</div>
+  <div class="overflow-auto" style={contentHeight}>
+    <slot />
+  </div>
+</WebsiteBorder>
 
 <style global>
   html,
