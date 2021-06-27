@@ -569,10 +569,10 @@ select@^1.1.2:
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
 
-sotion@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/sotion/-/sotion-1.1.1.tgz#c0886f29ef07d1ecfbef0d19b1c565f73ba98e5c"
-  integrity sha512-gP7kucwaDeg7iMGdQcwwkMir6ApSHS9C7IvlR2O3bHGz8oXKbxeTvqWtgMe+Uc5cN9wiDmqcbEFwgv9cTQb2Hw==
+sotion@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/sotion/-/sotion-1.1.2.tgz#7d769ea56ac940e6d4f12353bf1cb4c5021182d2"
+  integrity sha512-nMbWKdtctyvDGovDlmQEut6K+gXoRJaZRfBFHZc3lzJhBSLcKKiV+/524zBtLEcXbnAdC54J50IsJ6zt93iUBA==
   dependencies:
     katex "^0.13.0"
     prismjs "^1.23.0"

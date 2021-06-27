@@ -16,10 +16,10 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Page from "../../../lib/Page.svelte";
-  import { WorkAPI } from "../../../sotion/work-api";
-  import { CategoryAPI } from "../../../sotion/category-api";
-  import type { Category } from "src/models/category";
-  import type { Work } from "src/models/work";
+  import { WorkAPI } from "../../../api/work-api";
+  import { CategoryAPI } from "../../../api/category-api";
+  import type { Category } from "$models/category";
+  import type { Work } from "$models/work";
 
   export let works: Work[];
   export let category: Category;

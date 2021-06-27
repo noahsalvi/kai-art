@@ -1,5 +1,5 @@
 <script context="module">
-  import { CategoryAPI } from "../../sotion/category-api";
+  import { CategoryAPI } from "../../api/category-api";
 
   export async function load() {
     const categories = await CategoryAPI.getCategories();
@@ -10,7 +10,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Page from "../../lib/Page.svelte";
-  import type { Category } from "src/models/category";
+  import type { Category } from "$models/category";
 
   export let categories: Category[];
 </script>

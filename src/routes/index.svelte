@@ -77,10 +77,6 @@
 </main>
 
 <style global>
-  body {
-    @apply bg-primary;
-  }
-
   /* Mobile Nav Slanted Top */
   nav {
     position: relative;

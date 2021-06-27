@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import { sotion, Sotion } from "sotion";
-  import { WorkAPI } from "../../../sotion/work-api";
-  import type { Work } from "src/models/work";
+  import { WorkAPI } from "../../../api/work-api";
+  import type { Work } from "$models/work";
 
   export async function load({ page }) {
     const workSlug = page.params.work;
@@ -15,7 +15,7 @@
 
 <script lang="ts">
   export let work: Work;
-  export let blocks;
+  export let blocks: string;
 </script>
 
 <pre>

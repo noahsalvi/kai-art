@@ -1,14 +1,5 @@
-<script context="module">
-  import "virtual:windi.css";
-  import { sotion } from "sotion";
-
-  export function load({ fetch }) {
-    sotion.setFetch(fetch);
-    return {};
-  }
-</script>
-
 <script lang="ts">
+  import "virtual:windi.css";
   import NavigationBar from "../lib/navigationBar/NavigationBar.svelte";
   import { page } from "$app/stores";
   import WebsiteBorder from "$lib/WebsiteBorder.svelte";
