@@ -1,18 +1,18 @@
 <script context="module">
-  import { sotion } from "sotion";
+  import { CategoryAPI } from "../../sotion/category-api";
 
   export async function load() {
-    sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
-
-    return { props: { meta: await sotion.getScope() } };
+    const categories = await CategoryAPI.getCategories();
+    return { props: { categories } };
   }
 </script>
 
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Page from "../../lib/Page.svelte";
+  import type { Category } from "src/models/category";
 
-  export let meta: { Name: string; slug: string; image: { url: string }[] }[];
+  export let categories: Category[];
 </script>
 
 <svelte:head>
@@ -30,7 +30,7 @@
   <section
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-10"
   >
-    {#each meta as workGroup}
+    {#each categories as workGroup}
       <article
         class="flex flex-col cursor-pointer"
         on:click={() => goto("work/" + workGroup.slug)}
@@ -40,11 +40,11 @@
         >
           <img
             class="h-96 w-full object-cover"
-            src={workGroup.image && workGroup.image[0].url}
-            alt={workGroup.Name}
+            src={workGroup.thumbnail && workGroup.thumbnail[0].url}
+            alt={workGroup.name}
           />
         </div>
-        <h1 class="text-xl">{workGroup.Name}</h1>
+        <h1 class="text-xl">{workGroup.name}</h1>
       </article>
     {/each}
   </section>

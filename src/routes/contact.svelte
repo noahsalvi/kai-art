@@ -13,9 +13,9 @@
   import Page from "../lib/Page.svelte";
 
   export let blocks;
+  console.log(blocks);
 </script>
 
-{console.log(blocks)}
 <Page>
   <div
     class="bg-white rounded-lg flex flex-col md:flex-row p-10 h-full justify-between"

@@ -1,60 +1,57 @@
 <script context="module" lang="ts">
-  import { sotion } from "sotion";
-
   export async function load({ page }) {
-    sotion.setScope("fb38e374eb2c4048a443bdd52e95502d");
-    const { blocks, meta: workGroupMeta } = await sotion.slugPage(
-      page.params.workGroup
+    // TODO wrap api calls with Promise.all
+    const categories = await CategoryAPI.getCategories();
+    const category = categories.find(
+      (category) => category.slug === page.params.workGroup
     );
 
-    const parsedBlocks: any[] = JSON.parse(blocks);
-    const tableId = parsedBlocks.find(
-      (block) => block.type === "collection_view"
-    )?.id;
+    let works = await WorkAPI.getWorks();
+    works = works.filter((work) => work.category?.includes(category.name));
 
-    sotion.setScope(tableId);
-    let meta = await sotion.getScope();
-
-    return { props: { meta, workGroupMeta, slug: page.params.work } };
+    return { props: { category, works, slug: page.params.work } };
   }
 </script>
 
 <script lang="ts">
-  import { fadeIn, fadeOut } from "../../../utils/pageFade";
   import { goto } from "$app/navigation";
   import Page from "../../../lib/Page.svelte";
+  import { WorkAPI } from "../../../sotion/work-api";
+  import { CategoryAPI } from "../../../sotion/category-api";
+  import type { Category } from "src/models/category";
+  import type { Work } from "src/models/work";
 
-  export let meta: { Name: string; slug: string; image: { url: string }[] }[];
-  export let workGroupMeta: { Name: string; slug: string };
+  export let works: Work[];
+  export let category: Category;
 </script>
 
 <svelte:head>
-  <title>{workGroupMeta.Name}</title>
+  <title>{category.name}</title>
 </svelte:head>
 
 <Page>
-  <a href="/work">Werke</a> / <span>{workGroupMeta.Name}</span>
+  <a href="/work">Werke</a> / <span>{category.name}</span>
 
   <div class="m-5" />
 
   <section
     class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-10"
   >
-    {#each meta as work}
+    {#each works as work}
       <article
         class="flex flex-col cursor-pointer"
-        on:click={() => goto("/work/" + workGroupMeta.slug + "/" + work.slug)}
+        on:click={() => goto("/work/" + category.slug + "/" + work.slug)}
       >
         <div
           class="bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition"
         >
           <img
             class="h-96 w-full object-cover"
-            src={work.image && work.image[0].url}
-            alt={work.Name}
+            src={work.thumbnail && work.thumbnail[0].url}
+            alt={work.name}
           />
         </div>
-        <h1 class="text-xl">{work.Name}</h1>
+        <h1 class="text-xl">{work.name}</h1>
       </article>
     {/each}
   </section>
