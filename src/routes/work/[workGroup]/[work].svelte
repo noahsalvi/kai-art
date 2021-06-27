@@ -48,7 +48,7 @@
 
       <div class="m-5" />
 
-      <div class="md:min-w-90 lg:min-w-120 bg-red-50" />
+      <div class="md:min-w-90 lg:min-w-120" />
 
       <div
         class="w-full md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
@@ -66,8 +66,10 @@
 <style global>
   .sotion .no-page-cover-spacer {
     @apply h-0;
+  }
 
-    @screen md {
+  @screen md {
+    .sotion .no-page-cover-spacer {
       @apply h-20;
     }
   }
