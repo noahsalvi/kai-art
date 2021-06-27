@@ -2,6 +2,6 @@
   <title>Portrait</title>
 </svelte:head>
 
-<h1>About this site</h1>
+<h1 class="font-sans">About this site</h1>
 
-<p>This is the 'about' page. There's not much here.</p>
+<p class="font-sans">This is the 'about' page. There's not much here.</p>

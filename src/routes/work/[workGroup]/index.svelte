@@ -30,6 +30,9 @@
   <title>{category.name}</title>
 </svelte:head>
 
+<div
+  class="-z-10 h-250 w-250 bg-primary absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 rounded-full"
+/>
 <Page bodyClass="bg-background">
   <div class="text-gray font-sans">
     <a href="/work">Werke</a> / <span>{category.name}</span>
