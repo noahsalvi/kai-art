@@ -6,9 +6,9 @@
 </script>
 
 <nav
-  class="h-24 p-6 flex justify-between items-center w-full max-w-7xl mx-auto"
+  class="h-24 p-6 px-5 md:px-20 flex justify-between items-center w-full max-w-7xl mx-auto"
 >
-  <a href="/" class="flex items-end space-x-4 h-full">
+  <a href="/" class="flex items-end space-x-4 h-full -md:hidden">
     <img
       src="/logo.svg"
       alt="Logo"

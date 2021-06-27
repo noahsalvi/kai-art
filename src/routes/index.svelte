@@ -77,6 +77,10 @@
 </main>
 
 <style global>
+  body {
+    @apply bg-primary;
+  }
+
   /* Mobile Nav Slanted Top */
   nav {
     position: relative;
@@ -91,9 +95,6 @@
     z-index: -1;
     transform-origin: bottom left;
     transform: skewY(-8deg);
-  }
-  body {
-    @apply bg-primary;
   }
 
   .navigation-item {

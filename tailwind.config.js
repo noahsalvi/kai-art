@@ -1,4 +1,6 @@
-module.exports = {
+import { defineConfig } from "windicss/helpers";
+
+export default defineConfig({
   darkMode: "class",
   theme: {
     extend: {
@@ -15,4 +17,4 @@ module.exports = {
       sans: ["Cinzel Decorative", "serif"],
     },
   },
-};
+});
