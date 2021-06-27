@@ -1,0 +1,4 @@
+.secondary {
+  @apply bg-primary text-white text-center px-3 py-2 rounded-md shadow-md shadow-black transition;
+  @apply hover:(bg-gray);
+}

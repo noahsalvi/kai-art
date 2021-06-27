@@ -20,6 +20,7 @@
   import { CategoryAPI } from "../../../api/category-api";
   import type { Category } from "$models/category";
   import type { Work } from "$models/work";
+  import { onDestroy, onMount } from "svelte";
 
   export let works: Work[];
   export let category: Category;
@@ -29,8 +30,10 @@
   <title>{category.name}</title>
 </svelte:head>
 
-<Page>
-  <a href="/work">Werke</a> / <span>{category.name}</span>
+<Page bodyClass="bg-background">
+  <div class="text-gray font-sans">
+    <a href="/work">Werke</a> / <span>{category.name}</span>
+  </div>
 
   <div class="m-5" />
 

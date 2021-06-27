@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickOutside } from "$lib/actions/clickOutside";
+  import { clickOutside } from "../../actions/clickOutside";
 
   import { fade, slide, fly, blur } from "svelte/transition";
   export let modalClass = "";

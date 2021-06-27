@@ -14,7 +14,8 @@ export default defineConfig({
       },
     },
     fontFamily: {
-      sans: ["Cinzel Decorative", "serif"],
+      serif: ["Cinzel Decorative", "serif"],
+      sans: ["Titillium Web", "sans-serif"],
     },
   },
 });

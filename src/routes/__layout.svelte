@@ -1,6 +1,7 @@
 <script lang="ts">
   import "virtual:windi.css";
-  import NavigationBar from "../lib/navigationBar/NavigationBar.svelte";
+  import "../lib/Components.css";
+  import NavigationBar from "../lib/NavigationBar/NavigationBar.svelte";
   import { page } from "$app/stores";
   import WebsiteBorder from "$lib/WebsiteBorder.svelte";
 

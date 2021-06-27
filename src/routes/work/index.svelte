@@ -22,8 +22,8 @@
 <div
   class="bg-primary w-full h-170 fixed top-0 left-0 -translate-y-120 transform -skew-y-10 -z-1"
 />
-<Page>
-  <a href="/work">Werke</a>
+<Page bodyClass="bg-background">
+  <a class="text-background font-sans" href="/work">Werke</a>
 
   <div class="m-5" />
 
@@ -49,9 +49,3 @@
     {/each}
   </section>
 </Page>
-
-<style global>
-  body {
-    @apply bg-background;
-  }
-</style>

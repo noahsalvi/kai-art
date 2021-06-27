@@ -10,24 +10,31 @@
 
 <script>
   import { sotion, Sotion } from "sotion";
-  import Page from "../lib/Page.svelte";
+  import Page from "$lib/Page.svelte";
 
   export let blocks;
-  console.log(blocks);
 </script>
 
-<Page>
-  <div
-    class="bg-white rounded-lg flex flex-col md:flex-row p-10 h-full justify-between"
-  >
-    <div class="flex flex-col">
-      <Sotion {blocks} />
-      <a href="kai@mäder.ch" class="secondary mt-5 md:mt-auto "
-        >Email verfassen</a
-      >
-    </div>
-    <div class="mt-5">
-      <img src="images/weed.png" alt="Kai" class="w-full md:w-auto" />
+<div
+  class="-z-10 absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 rounded-full bg-primary h-300 w-300"
+/>
+<Page bodyClass="bg-background">
+  <div class="h-full max-h-3xl pb-8">
+    <div
+      class="min-h-full  font-sans bg-white rounded-lg flex flex-col md:flex-row p-10 justify-between"
+    >
+      <div class="flex flex-col">
+        <div class="md:mt-10">
+          <Sotion {blocks} />
+        </div>
+        <a href="mailto:kai@mäder.ch" class="secondary mt-5 md:mt-auto "
+          >Email verfassen</a
+        >
+      </div>
+
+      <div class="mt-5">
+        <img src="images/weed.png" alt="Kai" class="h-full w-full md:w-auto" />
+      </div>
     </div>
   </div>
 </Page>
@@ -38,7 +45,7 @@
   }
 
   .sotion .page-title {
-    @apply text-2xl;
+    @apply text-3xl;
   }
 
   .sotion .text {
