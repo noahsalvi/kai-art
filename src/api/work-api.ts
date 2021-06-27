@@ -8,7 +8,6 @@ export class WorkAPI {
   static async getWorks() {
     if (!this.works) {
       this.works = await sotion.fetchTable(this.workID);
-      console.log(this.works);
     }
 
     return this.works;
