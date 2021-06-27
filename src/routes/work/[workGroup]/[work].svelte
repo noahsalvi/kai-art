@@ -75,7 +75,7 @@
   }
 
   .sotion .page-title {
-    @apply font-bold text-3xl text-primary;
+    @apply font-bold text-3xl text-primary mb-5;
   }
 
   .sotion .text {
