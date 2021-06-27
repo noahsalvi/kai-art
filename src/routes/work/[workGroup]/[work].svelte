@@ -44,9 +44,9 @@
     class="absolute left-0 top-30 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
   />
 
-  <div class="flex-grow mt-30 font-sans">
+  <div class="flex-grow mt-30 mx-3 sm:mx-6 font-sans">
     <main
-      class="relative min-h-2xl flex -md:flex-col justify-between bg-white mx-6 p-10 rounded-xl"
+      class="relative min-h-2xl flex flex-col md:(flex-row justify-between) bg-white p-5 sm:p-10 rounded-xl"
     >
       <div class="mx-auto max-w-[75ch] md:mx-0">
         <Sotion {blocks} />

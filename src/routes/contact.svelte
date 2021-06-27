@@ -21,7 +21,7 @@
 <Page bodyClass="bg-background">
   <div class="h-full max-h-3xl pb-8">
     <div
-      class="min-h-full  font-sans bg-white rounded-lg flex flex-col md:flex-row p-10 justify-between"
+      class="min-h-full font-sans bg-white rounded-lg flex flex-col p-5 md:(flex-row p-10) justify-between"
     >
       <div class="flex flex-col">
         <div class="md:mt-10">

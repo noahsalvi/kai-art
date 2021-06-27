@@ -20,7 +20,7 @@
 </svelte:head>
 
 <div
-  class="bg-primary w-full h-170 fixed top-0 left-0 -translate-y-120 transform -skew-y-10 -z-1"
+  class="bg-primary w-full h-170 absolute top-0 left-0 -translate-y-120 transform -skew-y-10 -z-1"
 />
 <Page bodyClass="bg-background">
   <a class="text-background font-sans" href="/work">Werke</a>
@@ -28,7 +28,7 @@
   <div class="m-5" />
 
   <section
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-10"
+    class="font-sans grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-10"
   >
     {#each categories as workGroup}
       <article

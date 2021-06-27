@@ -15,8 +15,8 @@
 
 {#if open}
   <div
-    class="{modalClass} z-100 bg-smoke w-50 rounded-lg flex flex-col items-stretch text-center"
-    transition:blur
+    class="{modalClass} z-100 bg-smoke w-50 rounded-lg flex flex-col items-stretch text-center font-sans"
+    transition:blur|local
     use:clickOutside={handleClick}
   >
     <a href="work" class="py-6 hover:(bg-white)">Werke</a>
