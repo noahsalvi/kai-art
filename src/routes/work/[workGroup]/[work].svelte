@@ -31,6 +31,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>{work.name}</title>
+</svelte:head>
+
 <div class="relative h-full max-w-10xl mx-auto flex flex-col">
   <div
     class="h-10 max-w-7xl mx-auto px-5 sm:(px-20 w-full) z-10 text-gray font-sans"
