@@ -44,11 +44,11 @@
     class="absolute left-0 top-30 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
   />
 
-  <div class="flex-grow mt-30 mx-3 sm:mx-6 font-sans">
+  <div class="flex-grow mt-30 mx-3 sm:mx-6">
     <main
       class="relative min-h-2xl flex flex-col md:(flex-row justify-between) bg-white p-5 sm:p-10 rounded-xl"
     >
-      <div class="mx-auto max-w-[75ch] md:mx-0">
+      <div class="max-w-[75ch] md:mx-0">
         <Sotion {blocks} />
       </div>
 
@@ -78,13 +78,5 @@
     .sotion .no-page-cover-spacer {
       @apply h-20;
     }
-  }
-
-  .sotion .page-title {
-    @apply font-bold text-3xl text-primary mb-5;
-  }
-
-  .sotion .text {
-    @apply text-gray text-lg;
   }
 </style>

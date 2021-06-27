@@ -18,5 +18,5 @@ export default defineConfig({
       sans: ["Titillium Web", "sans-serif"],
     },
   },
-  plugins: [require("windicss/plugin/aspect-ratio")],
+  plugins: [],
 });

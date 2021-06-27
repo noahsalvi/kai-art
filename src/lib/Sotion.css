@@ -1,0 +1,19 @@
+.sotion {
+  @apply font-sans;
+}
+
+.sotion .page-title {
+  @apply font-bold text-3xl text-primary mb-5;
+}
+
+.sotion .sotion-header {
+  @apply text-primary text-2xl font-bold;
+}
+
+.sotion .sotion-subheader {
+  @apply text-warm-gray-800 text-xl font-bold;
+}
+
+.sotion .text {
+  @apply text-gray text-lg;
+}
