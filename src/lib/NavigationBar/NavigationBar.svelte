@@ -4,6 +4,7 @@
 
   $: darkTheme = ["/work"].includes(path);
   $: whiteTitle = darkTheme ? "text-white" : "";
+  $: logoBorderColor = darkTheme ? "border-white" : "border-primary";
 </script>
 
 <nav
@@ -15,7 +16,7 @@
     <img
       src="/logo.svg"
       alt="Logo"
-      class="w-16 max-w-full sm:(w-auto h-full) rounded-lg hover:text-opacity-25 transition-all border border-white"
+      class="w-16 max-w-full  rounded-lg  transition-all border sm:(w-auto h-full) hover:text-opacity-25 {logoBorderColor}"
     />
     <h1
       class="font-thin hidden text-2xl hidden whitespace-nowrap md:block lg:(text-3xl) {whiteTitle}"
