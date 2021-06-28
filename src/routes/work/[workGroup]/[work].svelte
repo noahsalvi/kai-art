@@ -37,7 +37,7 @@
 
 <div class="relative h-full max-w-10xl mx-auto flex flex-col">
   <div
-    class="h-10 max-w-7xl mx-auto px-5 sm:(px-20 w-full) z-10 text-gray font-sans"
+    class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans md:px-20"
   >
     <a href="/work">Werke</a> /
     <a href=".">{work.category}</a> /
@@ -45,7 +45,7 @@
   </div>
 
   <div
-    class="absolute left-0 top-30 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
+    class="absolute left-0 top-25 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
   />
 
   <div class="flex-grow mt-30 mx-3 sm:mx-6">

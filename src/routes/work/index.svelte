@@ -23,7 +23,7 @@
   class="bg-primary w-full h-170 absolute top-0 left-0 -translate-y-120 transform -skew-y-10 -z-1"
 />
 <Page bodyClass="bg-background">
-  <a class="text-background font-sans" href="/work">Werke</a>
+  <a class="text-white font-sans" href="/work">Werke</a>
 
   <div class="m-5" />
 
