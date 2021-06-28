@@ -1,26 +1,18 @@
 <script lang="ts">
-  import { clickOutside } from "../../actions/clickOutside";
+  import { slide } from "svelte/transition";
 
-  import { fade, slide, fly, blur } from "svelte/transition";
-  export let modalClass = "";
-  export let open = false;
-  export let openMobileNavButton: HTMLImageElement;
-
-  function handleClick(event: MouseEvent) {
-    if (!openMobileNavButton.contains(event.target as Node)) {
-      open = !open;
-    }
-  }
+  export let show = false;
 </script>
 
-{#if open}
-  <div
-    class="{modalClass} z-100 bg-smoke w-50 rounded-lg flex flex-col items-stretch text-center font-sans"
-    transition:blur|local
-    use:clickOutside={handleClick}
-  >
-    <a href="work" class="py-6 hover:(bg-white)">Werke</a>
-    <a href="portrait" class="py-6 hover:(bg-white)">Portrait</a>
-    <a href="contact" class="py-6 hover:(bg-white)">Kontakt</a>
-  </div>
-{/if}
+<div class="md:hidden">
+  {#if show}
+    <div
+      class="z-20 mt-10 flex flex-col items-stretch text-xl text-white px-10 font-sans space-y-2"
+      transition:slide|local
+    >
+      <a href="work" class="mobile-footer-navigation-item">Werke</a>
+      <a href="portrait" class="mobile-footer-navigation-item">Portrait</a>
+      <a href="contact" class="mobile-footer-navigation-item">Kontakt</a>
+    </div>
+  {/if}
+</div>

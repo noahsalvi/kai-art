@@ -1,12 +1,13 @@
 <script context="module" lang="ts">
   export async function load({ page }) {
-    // TODO wrap api calls with Promise.all
-    const categories = await CategoryAPI.getCategories();
+    let [categories, works] = await Promise.all([
+      CategoryAPI.getCategories(),
+      WorkAPI.getWorks(),
+    ]);
+
     const category = categories.find(
       (category) => category.slug === page.params.workGroup
     );
-
-    let works = await WorkAPI.getWorks();
     works = works.filter((work) => work.category?.includes(category.name));
 
     return { props: { category, works, slug: page.params.work } };
@@ -20,7 +21,6 @@
   import { CategoryAPI } from "../../../api/category-api";
   import type { Category } from "$models/category";
   import type { Work } from "$models/work";
-  import { onDestroy, onMount } from "svelte";
 
   export let works: Work[];
   export let category: Category;
