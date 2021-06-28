@@ -14,7 +14,7 @@
 
 <a
   href={path}
-  class="dark text-lg {hoverTextColor} {isActive
+  class="dark {hoverTextColor} {isActive
     ? 'underline ' + activeTextColor
     : textColor}"><slot /></a
 >
