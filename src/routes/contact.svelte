@@ -21,7 +21,7 @@
 <Page bodyClass="bg-background">
   <div class="h-full max-h-3xl pb-8">
     <div
-      class="min-h-full font-sans bg-white rounded-lg flex flex-col p-5 md:(flex-row p-10) justify-between"
+      class="min-h-full font-sans bg-white rounded-lg flex flex-col p-5 justify-between md:h-full md:(flex-row p-10)"
     >
       <div class="flex flex-col">
         <div class="md:mt-10">
@@ -32,8 +32,8 @@
         >
       </div>
 
-      <div class="mt-5">
-        <img src="images/weed.png" alt="Kai" class="h-full w-full md:w-auto" />
+      <div class="mt-5 md:(flex justify-end)">
+        <img src="images/weed.png" alt="Kai" class="h-full w-full max-h-full md:w-auto" />
       </div>
     </div>
   </div>
