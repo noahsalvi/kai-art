@@ -4,7 +4,7 @@
 </script>
 
 <script lang="ts">
-  import { onMount, setContext } from "svelte";
+  import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import type { Writable } from "svelte/store";
 
@@ -17,6 +17,7 @@
   let bottomHeight: number;
   let image: HTMLImageElement;
 
+  $: if (image) handleSwipes();
   $: src = $images[imageIndex];
   $: hasPrevious = imageIndex;
   $: hasNext = imageIndex + 1 < $images.length;
@@ -38,18 +39,21 @@
       close();
     }
   };
-  onMount(async () => {
+
+  const handleSwipes = async () => {
+    console.log(image);
+
     const Hammer = (await import("hammerjs")).default;
     const imageHammer = new Hammer(image, {});
+
     imageHammer.on("swipe", (e) => {
-      console.log(e);
       if (e.direction === Hammer.DIRECTION_LEFT) {
         nextImage();
       } else if (e.direction === Hammer.DIRECTION_RIGHT) {
         previousImage();
       }
     });
-  });
+  };
 </script>
 
 <slot />
@@ -57,7 +61,7 @@
   <!-- Overlay -->
   <div
     on:click={close}
-    class="z-220 fixed left-0 top-0 h-screen w-screen bg-black bg-opacity-85"
+    class="z-220 fixed left-0 top-0 h-screen-ios w-screen bg-black bg-opacity-85 overflow-hidden"
   >
     <div style="height: calc(100% - {bottomHeight}px)" class="flex">
       <div class="button-container">
@@ -118,7 +122,7 @@
     <div
       on:click|stopPropagation={close}
       class="
-      h-14 w-14 fixed top-10 right-10 
+      h-14 w-14 fixed top-5 right-5 
       bg-primary bg-opacity-80 rounded-full text-white font-sans
       flex justify-center items-center
       cursor-pointer
@@ -142,5 +146,10 @@
 
   .ui-color {
     @apply bg-primary bg-opacity-80;
+  }
+
+  .h-screen-ios {
+    height: 100vh;
+    height: -webkit-fill-available;
   }
 </style>
