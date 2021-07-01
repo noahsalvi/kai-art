@@ -4,17 +4,18 @@
 </script>
 
 <script lang="ts">
-  import { setContext } from "svelte";
+  import { onMount, setContext } from "svelte";
   import { writable } from "svelte/store";
   import type { Writable } from "svelte/store";
 
-  let activated = writable(true);
+  let activated = writable(false);
   let images: Writable<string[]> = writable([]);
   setContext(activatedKey, activated);
   setContext(imagesKey, images);
 
   let imageIndex = 0;
   let bottomHeight: number;
+  let image: HTMLImageElement;
 
   $: src = $images[imageIndex];
   $: hasPrevious = imageIndex;
@@ -37,6 +38,18 @@
       close();
     }
   };
+  onMount(async () => {
+    const Hammer = (await import("hammerjs")).default;
+    const imageHammer = new Hammer(image, {});
+    imageHammer.on("swipe", (e) => {
+      console.log(e);
+      if (e.direction === Hammer.DIRECTION_LEFT) {
+        nextImage();
+      } else if (e.direction === Hammer.DIRECTION_RIGHT) {
+        previousImage();
+      }
+    });
+  });
 </script>
 
 <slot />
@@ -44,42 +57,51 @@
   <!-- Overlay -->
   <div
     on:click={close}
-    class="z-100 fixed left-0 top-0 h-screen w-screen bg-black bg-opacity-85"
+    class="z-220 fixed left-0 top-0 h-screen w-screen bg-black bg-opacity-85"
   >
     <div style="height: calc(100% - {bottomHeight}px)" class="flex">
-      <div class="w-60 h-full flex-shrink-0 flex justify-center items-center">
+      <div class="button-container">
         <!-- Left Button -->
         {#if hasPrevious}
-          <div on:click|stopPropagation={previousImage} class="switch-button">
+          <div
+            on:click|stopPropagation={previousImage}
+            class="switch-button ui-color"
+          >
             &lt;
           </div>
         {/if}
       </div>
       <!-- Image Container -->
-      <div class="flex-grow h-full flex justify-center sm:pt-20">
+      <div class="flex-grow h-full flex justify-center md:pt-20">
         <img
+          bind:this={image}
           on:click|stopPropagation
           class="h-full max-w-full object-contain"
           {src}
           alt={{}.toString()}
         />
       </div>
-      <div class="w-60 h-full flex-shrink-0 flex justify-center items-center">
+      <div class="button-container">
         <!-- Right Button -->
         {#if hasNext}
-          <div on:click|stopPropagation={nextImage} class="switch-button">
+          <div
+            on:click|stopPropagation={nextImage}
+            class="switch-button ui-color"
+          >
             &gt;
           </div>
         {/if}
       </div>
     </div>
+
+    <!-- Bottom Overview thingy -->
     <div
       bind:clientHeight={bottomHeight}
       class="h-20 flex justify-center items-center"
     >
       <div
         on:click|stopPropagation
-        class="bg-primary py-4 px-5 space-x-4 rounded-xl flex"
+        class="ui-color py-4 px-5 space-x-4 rounded-xl flex"
       >
         {#each $images as _, index}
           <div
@@ -91,12 +113,34 @@
         {/each}
       </div>
     </div>
+
+    <!-- Close Button -->
+    <div
+      on:click|stopPropagation={close}
+      class="
+      h-14 w-14 fixed top-10 right-10 
+      bg-primary bg-opacity-80 rounded-full text-white font-sans
+      flex justify-center items-center
+      cursor-pointer
+      hover:bg-gray
+      "
+    >
+      X
+    </div>
   </div>
 {/if}
 <svelte:window on:keyup={handleKeyNavigation} />
 
 <style>
   .switch-button {
-    @apply w-15 h-15 flex justify-center items-center rounded-full bg-primary text-white cursor-pointer hover:bg-gray;
+    @apply w-15 h-15 flex justify-center items-center rounded-full text-white cursor-pointer hover:bg-gray;
+  }
+
+  .button-container {
+    @apply w-25 h-full flex-shrink-0 flex justify-center items-center -md:hidden lg:w-40 xl:w-60;
+  }
+
+  .ui-color {
+    @apply bg-primary bg-opacity-80;
   }
 </style>
