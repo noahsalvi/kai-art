@@ -3,11 +3,14 @@
   import { WorkAPI } from "../../../api/work-api";
   import type { Work } from "$models/work";
   import { onDestroy, onMount } from "svelte";
+  import ImageViewer from "$lib/ImageViewer/ImageViewer.svelte";
+  import Image from "$lib/ImageViewer/Image.svelte";
 
   export async function load({ page }) {
-    const workSlug = page.params.work;
+    const workSlug: string = page.params["work"];
     const works = await WorkAPI.getWorks();
     const work = works.find((work) => work.slug === workSlug);
+
     const blocks = await sotion.fetchPage(work.id);
 
     return { props: { blocks, work } };
@@ -29,49 +32,54 @@
   onDestroy(() => {
     if (mounted) document.body.classList.remove(backgroundColor);
   });
+
+  const images = work.thumbnail.map((image) => image.url);
 </script>
 
 <svelte:head>
   <title>{work.name}</title>
 </svelte:head>
 
-<div class="relative h-full max-w-10xl mx-auto flex flex-col">
-  <div
-    class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans md:px-20"
-  >
-    <a href="/work">Werke</a> /
-    <a href=".">{work.category}</a> /
-    <span>{work.name}</span>
-  </div>
-
-  <div
-    class="absolute left-0 top-25 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
-  />
-
-  <div class="flex-grow mt-30 mx-3 sm:mx-6">
-    <main
-      class="relative min-h-2xl flex flex-col md:(flex-row justify-between) bg-white p-5 sm:p-10 rounded-xl"
+<ImageViewer>
+  <div class="relative h-full max-w-10xl mx-auto flex flex-col">
+    <div
+      class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans md:px-20"
     >
-      <div class="max-w-[75ch] md:mx-0">
-        <Sotion {blocks} />
-      </div>
+      <a href="/work">Werke</a> /
+      <a href=".">{work.category}</a> /
+      <span>{work.name}</span>
+    </div>
 
-      <div class="m-5" />
+    <div
+      class="absolute left-0 top-25 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
+    />
 
-      <div class="md:min-w-90 lg:min-w-120" />
-
-      <div
-        class="w-full md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
+    <div class="flex-grow mt-30 mx-3 sm:mx-6">
+      <main
+        class="relative min-h-2xl flex flex-col md:(flex-row justify-between) bg-white p-5 sm:p-10 rounded-xl"
       >
-        <img
+        <div class="max-w-[75ch] md:mx-0">
+          <Sotion {blocks} />
+        </div>
+
+        <div class="m-5" />
+
+        <div class="md:min-w-90 lg:min-w-120" />
+
+        <div
+          class="w-full md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
+        >
+          <!-- <img
           class="min-w-full min-h-full object-cover"
           src={work.thumbnail && work.thumbnail[0].url}
           alt={work.name}
-        />
-      </div>
-    </main>
+        /> -->
+          <Image class="min-w-full min-h-full object-cover" {images} />
+        </div>
+      </main>
+    </div>
   </div>
-</div>
+</ImageViewer>
 
 <style global>
   .sotion .no-page-cover-spacer {

@@ -2,6 +2,6 @@ export type Work = {
   id: string;
   name: string;
   slug: string;
-  thumbnail: any;
+  thumbnail: { url: string }[];
   category: string[];
 };
