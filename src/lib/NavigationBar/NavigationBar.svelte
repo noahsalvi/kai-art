@@ -1,5 +1,6 @@
 <script>
   import NavigationLink from "./NavigationLink.svelte";
+
   export let path;
 
   $: darkTheme = ["/work"].includes(path);
@@ -19,7 +20,7 @@
     <img
       src="/logo.svg"
       alt="Logo"
-      class="w-16 max-w-full rounded-lg transition-all border sm:(w-auto h-full) hover:text-opacity-25 {logoBorderColor}"
+      class="w-16 rounded-lg transition-all border sm:(w-auto h-full) hover:text-opacity-25 {logoBorderColor}"
     />
     <h1
       class="font-thin hidden text-2xl hidden whitespace-nowrap md:block lg:(text-3xl) {whiteTitle}"

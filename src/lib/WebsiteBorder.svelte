@@ -2,7 +2,7 @@
   export let path;
   let borderColor = "border-white";
   $: {
-    if (path === "/") borderColor = "border-black";
+    if (path === "/") borderColor = "border-gray";
     else borderColor = "border-white";
   }
 </script>
