@@ -122,8 +122,8 @@
     <div
       on:click|stopPropagation={close}
       class="
-      h-14 w-14 fixed top-5 right-5 
-      bg-primary bg-opacity-80 rounded-full text-white font-sans
+      h-14 w-14 fixed bottom-5 left-5 
+      bg-primary bg-opacity-80 rounded-xl text-white font-sans
       flex justify-center items-center
       cursor-pointer
       hover:bg-gray
