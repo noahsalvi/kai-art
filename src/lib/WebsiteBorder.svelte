@@ -8,7 +8,8 @@
 </script>
 
 <div
-  class="absolute h-full w-full z-200 border-7 transition transition-colors duration-200 {borderColor} rounded-xl pointer-events-none"
+  class="absolute h-full w-full 
+  z-200 border-7 transition transition-colors duration-200 pointer-events-none {borderColor}"
 />
 <div
   class="h-full min-h-full w-full border-7 border-black overflow-hidden relative"
