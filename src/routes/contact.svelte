@@ -11,6 +11,7 @@
 <script>
   import { sotion, Sotion } from "sotion";
   import Page from "$lib/Page.svelte";
+  import { PERSONALITIES } from "../config";
 
   export let blocks;
 </script>
@@ -27,13 +28,18 @@
         <div class="md:mt-10">
           <Sotion {blocks} />
         </div>
-        <a href="mailto:kai@mäder.ch" class="secondary mt-5 md:mt-auto "
-          >Email verfassen</a
+        <a
+          href="mailto:{PERSONALITIES.email}"
+          class="secondary mt-5 md:mt-auto ">Email verfassen</a
         >
       </div>
 
       <div class="mt-5 md:(flex justify-end)">
-        <img src="images/weed.png" alt="Kai" class="h-full w-full max-h-full md:w-auto" />
+        <img
+          src="images/weed.png"
+          alt="Kai"
+          class="h-full w-full max-h-full md:w-auto"
+        />
       </div>
     </div>
   </div>

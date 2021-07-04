@@ -1,6 +1,6 @@
 <script lang="ts">
   import MobileNav from "$lib/landing/MobileNav.svelte";
-  import { slide } from "svelte/transition";
+  import { PERSONALITIES } from "../config";
 
   let showMobileNav = false;
   let mainHeight: number;
@@ -32,13 +32,17 @@
     <div
       class="flex justify-center items-center space-x-4 text-xl sm:text-2xl md:text-lg lg:text-xl"
     >
-      <a class="text-smoke hover:text-white" href="mailto:kai@email">Email</a>
+      <a class="text-smoke hover:text-white" href="mailto:{PERSONALITIES.email}"
+        >Email</a
+      >
       <div class="bg-smoke rounded-full w-1 h-1" />
-      <a class="text-smoke hover:text-white" href="tel:0790000000">Tel</a>
+      <a class="text-smoke hover:text-white" href="tel:{PERSONALITIES.phone}"
+        >Tel</a
+      >
       <div class="bg-smoke rounded-full w-1 h-1" />
       <a
         class="text-smoke hover:text-white"
-        href="https://instagram.com/kai_nicolai"
+        href="https://instagram.com/{PERSONALITIES.instagram}"
         target="_blank">Instagram</a
       >
     </div>
