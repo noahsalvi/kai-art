@@ -69,11 +69,6 @@
         <div
           class="w-full h-100 md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
         >
-          <!-- <img
-          class="min-w-full min-h-full object-cover"
-          src={work.thumbnail && work.thumbnail[0].url}
-          alt={work.name}
-        /> -->
           <Images {images} />
         </div>
       </main>

@@ -8,6 +8,7 @@
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import type { Writable } from "svelte/store";
+  import { fade } from "svelte/transition";
 
   let activated = writable(false);
   let images: Writable<string[]> = writable([]);
@@ -29,7 +30,6 @@
 
   const close = () => {
     $activated = false;
-    $imageIndex = 0;
   };
 
   const handleKeyNavigation = (e: KeyboardEvent) => {

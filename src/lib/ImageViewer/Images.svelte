@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { getContext, onMount, tick } from "svelte";
+  import { getContext, onMount } from "svelte";
   import type { Writable } from "svelte/store";
   import { tweened } from "svelte/motion";
   import { activatedKey, imagesKey, indexKey } from "./ImageViewer.svelte";
+  import ImagesOverview from "./ImagesOverview.svelte";
+  import { fade } from "svelte/transition";
 
   export let images: string[] = [];
 
@@ -19,68 +21,71 @@
   let currentOffsetX = tweened(0, { duration: 0 });
 
   $: imageSelectedOffsetX = $imageSelectedIndex * -100;
+  $: currentOffsetX.set(imageSelectedOffsetX, { duration: 200 });
   $: hasPrevious = $imageSelectedIndex;
   $: hasNext = $imageSelectedIndex < images.length - 1;
 
   onMount(() => {
     preloadImages = true;
-    handlePan();
+    setupHammer();
   });
 
-  const handlePan = async () => {
+  const setupHammer = async () => {
     const Hammer = (await import("hammerjs")).default;
 
     const imageHammer = new Hammer(image, {
       inputClass: Hammer.TouchMouseInput,
     });
 
-    imageHammer.on("tap", () => {
-      $activated = true;
-    });
-
-    imageHammer.on("pan", async (e) => {
-      let offset = imageSelectedOffsetX + e.deltaX / 2.5;
-
-      if (offset > maxOffsetX) offset = maxOffsetX;
-      else if (offset < minOffsetX) offset = minOffsetX;
-
-      $currentOffsetX = offset;
-
-      // End of pan movement
-      if (e.isFinal) {
-        const previousIndex = $imageSelectedIndex;
-        $imageSelectedIndex = Math.round(offset / -100);
-
-        if (previousIndex === $imageSelectedIndex) {
-          // If the pans were fast enough, switch to the next/previous image
-          if (e.velocityX <= -velocityBonusMargin && hasNext) {
-            $imageSelectedIndex++;
-          } else if (e.velocityX >= velocityBonusMargin && hasPrevious) {
-            $imageSelectedIndex--;
-          }
-        }
-        await tick();
-        currentOffsetX.set(imageSelectedOffsetX, { duration: 200 });
-      }
-    });
-
-    $viewerImages = images;
+    imageHammer.on("pan", handlePan);
+    imageHammer.on("tap", handleTap);
   };
+
+  const handleTap = () => ($activated = true);
+
+  const handlePan = async (e) => {
+    let offset = imageSelectedOffsetX + e.deltaX / 2.5;
+
+    if (offset > maxOffsetX) offset = maxOffsetX;
+    else if (offset < minOffsetX) offset = minOffsetX;
+
+    $currentOffsetX = offset;
+
+    // End of pan movement
+    if (e.isFinal) {
+      const previousIndex = $imageSelectedIndex;
+      $imageSelectedIndex = Math.round(offset / -100);
+
+      if (previousIndex === $imageSelectedIndex) {
+        // If the pans were fast enough, switch to the next/previous image
+        if (e.velocityX <= -velocityBonusMargin && hasNext) {
+          $imageSelectedIndex++;
+        } else if (e.velocityX >= velocityBonusMargin && hasPrevious) {
+          $imageSelectedIndex--;
+        }
+      }
+    }
+  };
+
+  $viewerImages = images;
 </script>
 
 <!-- Image Container -->
 <div
   bind:this={image}
-  class="w-full h-full flex overflow-hidden {$$props.class}"
+  class="relative w-full h-full flex overflow-hidden {$$props.class}"
 >
-  {#each images as src}
-    <img
-      {src}
-      class="h-full min-h-full w-full object-cover cursor-pointer"
-      style="transform: translateX({$currentOffsetX}%)"
-      alt="preview images"
-    />
-  {/each}
+  {#if !$activated}
+    {#each images as src}
+      <img
+        {src}
+        class="h-full min-h-full w-full object-cover cursor-pointer"
+        style="transform: translateX({$currentOffsetX}%)"
+        alt="preview images"
+      />
+    {/each}
+    <ImagesOverview {images} imageIndex={$imageSelectedIndex} />
+  {/if}
 </div>
 
 <!-- Preload all the images -->
