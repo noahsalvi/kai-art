@@ -8,6 +8,10 @@
   $: mobileTitlePlacement = showMobileNav ? "top-10" : "bottom-48";
 </script>
 
+<svelte:head>
+  <title>Kai Art & Design</title>
+</svelte:head>
+
 <main class="h-full min-h-150 flex relative" bind:clientHeight={mainHeight}>
   <!-- Mobile slanted top -->
   <nav
@@ -77,12 +81,6 @@
       Kai Art & Design
     </h1>
   </section>
-
-  <!-- <MobileNav
-    modalClass="absolute bottom-50 right-10 transform"
-    bind:open={showMobileNav}
-    {openMobileNavButton}
-  /> -->
 </main>
 
 <style global>
