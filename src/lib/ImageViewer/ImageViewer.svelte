@@ -1,6 +1,7 @@
 <script context="module">
   export const activatedKey = {};
   export const imagesKey = {};
+  export const indexKey = {};
 </script>
 
 <script lang="ts">
@@ -10,24 +11,25 @@
 
   let activated = writable(false);
   let images: Writable<string[]> = writable([]);
-  setContext(activatedKey, activated);
-  setContext(imagesKey, images);
-
-  let imageIndex = 0;
+  let imageIndex = writable(0);
   let bottomHeight: number;
   let image: HTMLImageElement;
 
-  $: if (image) handleSwipes();
-  $: src = $images[imageIndex];
-  $: hasPrevious = imageIndex;
-  $: hasNext = imageIndex + 1 < $images.length;
+  setContext(activatedKey, activated);
+  setContext(imagesKey, images);
+  setContext(indexKey, imageIndex);
 
-  const previousImage = () => (hasPrevious ? imageIndex-- : imageIndex);
-  const nextImage = () => (hasNext ? imageIndex++ : imageIndex);
+  $: if (image) handleSwipes();
+  $: src = $images[$imageIndex];
+  $: hasPrevious = $imageIndex;
+  $: hasNext = $imageIndex < $images.length - 1;
+
+  const previousImage = () => (hasPrevious ? $imageIndex-- : $imageIndex);
+  const nextImage = () => (hasNext ? $imageIndex++ : $imageIndex);
 
   const close = () => {
     $activated = false;
-    imageIndex = 0;
+    $imageIndex = 0;
   };
 
   const handleKeyNavigation = (e: KeyboardEvent) => {
@@ -41,10 +43,10 @@
   };
 
   const handleSwipes = async () => {
-    console.log(image);
-
     const Hammer = (await import("hammerjs")).default;
-    const imageHammer = new Hammer(image, {});
+    const imageHammer = new Hammer(image, {
+      inputClass: Hammer.TouchMouseInput,
+    });
 
     imageHammer.on("swipe", (e) => {
       if (e.direction === Hammer.DIRECTION_LEFT) {
@@ -111,7 +113,7 @@
           <div
             class="
               h-2 w-2 rounded-full
-              {index === imageIndex ? 'bg-white' : 'bg-gray'}
+              {index === $imageIndex ? 'bg-white' : 'bg-gray'}
             "
           />
         {/each}
@@ -122,7 +124,7 @@
     <div
       on:click|stopPropagation={close}
       class="
-      h-14 w-14 fixed bottom-5 left-5 md:(bottom-auto left-auto top-10 right-10) 
+      h-14 w-14 fixed bottom-5 right-5 md:(bottom-auto top-10 right-10) 
       bg-primary bg-opacity-80 rounded-xl text-white font-sans
       flex justify-center items-center
       cursor-pointer

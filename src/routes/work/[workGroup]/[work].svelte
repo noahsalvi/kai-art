@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
   import { sotion, Sotion } from "sotion";
   import { WorkAPI } from "../../../api/work-api";
-  import type { Work } from "$models/work";
   import { onDestroy, onMount } from "svelte";
   import ImageViewer from "$lib/ImageViewer/ImageViewer.svelte";
-  import Image from "$lib/ImageViewer/Image.svelte";
+  import Images from "$lib/ImageViewer/Images.svelte";
+  import type { Work } from "../../../models/work";
 
   export async function load({ page }) {
     const workSlug: string = page.params["work"];
@@ -67,14 +67,14 @@
         <div class="md:min-w-90 lg:min-w-120" />
 
         <div
-          class="w-full md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
+          class="w-full h-100 md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
         >
           <!-- <img
           class="min-w-full min-h-full object-cover"
           src={work.thumbnail && work.thumbnail[0].url}
           alt={work.name}
         /> -->
-          <Image class="min-w-full min-h-full object-cover" {images} />
+          <Images {images} />
         </div>
       </main>
     </div>
