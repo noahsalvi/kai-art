@@ -10,7 +10,7 @@
 
 <script>
   import { sotion, Sotion } from "sotion";
-  import Page from "$lib/Page.svelte";
+  import Page from "../lib/Page.svelte";
   import { PERSONALITIES } from "../config";
 
   export let blocks;

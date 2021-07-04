@@ -19,8 +19,8 @@
   import Page from "../../../lib/Page.svelte";
   import { WorkAPI } from "../../../api/work-api";
   import { CategoryAPI } from "../../../api/category-api";
-  import type { Category } from "$models/category";
-  import type { Work } from "$models/work";
+  import type { Category } from "../../../models/category";
+  import type { Work } from "../../../models/work";
 
   export let works: Work[];
   export let category: Category;

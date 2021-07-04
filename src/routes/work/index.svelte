@@ -10,7 +10,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Page from "../../lib/Page.svelte";
-  import type { Category } from "$models/category";
+  import type { Category } from "../../models/category";
 
   export let categories: Category[];
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MobileNav from "$lib/landing/MobileNav.svelte";
+  import MobileNav from "../lib/landing/MobileNav.svelte";
   import { PERSONALITIES } from "../config";
 
   let showMobileNav = false;

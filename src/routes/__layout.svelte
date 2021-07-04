@@ -1,10 +1,10 @@
 <script lang="ts">
   import "virtual:windi.css";
-  import "$lib/Components.css";
-  import "$lib/Sotion.css";
-  import NavigationBar from "$lib/NavigationBar/NavigationBar.svelte";
+  import "../lib/Components.css";
+  import "../lib/Sotion.css";
+  import NavigationBar from "../lib/NavigationBar/NavigationBar.svelte";
+  import WebsiteBorder from "../lib/WebsiteBorder.svelte";
   import { page } from "$app/stores";
-  import WebsiteBorder from "$lib/WebsiteBorder.svelte";
 
   let navigationBarHeight: number;
 

@@ -2,8 +2,8 @@
   import { sotion, Sotion } from "sotion";
   import { WorkAPI } from "../../../api/work-api";
   import { onDestroy, onMount } from "svelte";
-  import ImageViewer from "$lib/ImageViewer/ImageViewer.svelte";
-  import Images from "$lib/ImageViewer/Images.svelte";
+  import ImageViewer from "../../../lib/ImageViewer/ImageViewer.svelte";
+  import Images from "../../../lib/ImageViewer/Images.svelte";
   import type { Work } from "../../../models/work";
 
   export async function load({ page }) {
