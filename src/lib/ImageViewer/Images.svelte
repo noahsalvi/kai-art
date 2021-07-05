@@ -4,7 +4,6 @@
   import { tweened } from "svelte/motion";
   import { activatedKey, imagesKey, indexKey } from "./ImageViewer.svelte";
   import ImagesOverview from "./ImagesOverview.svelte";
-  import { fade } from "svelte/transition";
 
   export let images: string[] = [];
 
@@ -16,7 +15,7 @@
   const minOffsetX = (images.length - 1) * -100;
   const velocityBonusMargin = 0.5;
 
-  let image: HTMLImageElement;
+  let imageContainerElement: HTMLImageElement;
   let preloadImages = false;
   let currentOffsetX = tweened(0, { duration: 0 });
 
@@ -35,8 +34,12 @@
   const setupHammer = async () => {
     const Hammer = (await import("hammerjs")).default;
 
-    const imageHammer = new Hammer(image, {
+    const imageHammer = new Hammer(imageContainerElement, {
       inputClass: Hammer.TouchMouseInput,
+      recognizers: [
+        [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL, threshold: 20 }],
+        [Hammer.Tap],
+      ],
     });
 
     imageHammer.on("pan", handlePan);
@@ -45,7 +48,7 @@
 
   const handleTap = () => ($activated = true);
 
-  const handlePan = async (e) => {
+  const handlePan = async (e: HammerInput) => {
     let offset = imageSelectedOffsetX + e.deltaX / 2.5;
 
     if (offset > maxOffsetX) offset = maxOffsetX;
@@ -77,7 +80,7 @@
 
 <!-- Image Container -->
 <div
-  bind:this={image}
+  bind:this={imageContainerElement}
   class="relative w-full h-full flex overflow-hidden {$$props.class}"
 >
   {#if !$activated}
