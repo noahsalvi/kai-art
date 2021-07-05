@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext, onMount } from "svelte";
+  import { getContext, onMount, tick } from "svelte";
   import type { Writable } from "svelte/store";
   import { tweened } from "svelte/motion";
   import { activatedKey, imagesKey, indexKey } from "./ImageViewer.svelte";
@@ -21,9 +21,11 @@
   let currentOffsetX = tweened(0, { duration: 0 });
 
   $: imageSelectedOffsetX = $imageSelectedIndex * -100;
-  $: currentOffsetX.set(imageSelectedOffsetX, { duration: 200 });
   $: hasPrevious = $imageSelectedIndex;
   $: hasNext = $imageSelectedIndex < images.length - 1;
+  $: if ($activated && imageSelectedIndex) {
+    $currentOffsetX = imageSelectedOffsetX;
+  }
 
   onMount(() => {
     preloadImages = true;
@@ -64,6 +66,9 @@
           $imageSelectedIndex--;
         }
       }
+
+      await tick();
+      currentOffsetX.set(imageSelectedOffsetX, { duration: 200 });
     }
   };
 
