@@ -57,7 +57,7 @@
 
     <div class="flex-grow mt-30 mx-3 sm:mx-6">
       <main
-        class="relative min-h-2xl flex flex-col bg-white p-5 rounded-xl sm:p-10 md:(flex-row justify-between)"
+        class="relative min-h-2xl flex flex-col-reverse bg-white p-5 rounded-xl sm:p-10 md:(flex-row justify-between)"
       >
         <div class="max-w-[75ch] w-full md:mx-0">
           <Sotion {blocks} />
