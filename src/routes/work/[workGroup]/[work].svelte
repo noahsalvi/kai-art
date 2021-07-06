@@ -43,22 +43,23 @@
 <ImageViewer>
   <div class="relative h-full max-w-10xl mx-auto flex flex-col">
     <div
-      class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans md:px-20"
+      class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans sm:px-20"
     >
       <a href="/work">Werke</a> /
       <a href=".">{work.category}</a> /
       <span>{work.name}</span>
     </div>
 
+    <!-- Decoration Blob -->
     <div
-      class="absolute left-0 top-25 bg-primary h-50 w-6/10 md:w-2/5 rounded-xl"
+      class="absolute left-0 top-25 bg-primary h-50 w-6/10 rounded-xl md:w-2/5"
     />
 
     <div class="flex-grow mt-30 mx-3 sm:mx-6">
       <main
-        class="relative min-h-2xl flex flex-col md:(flex-row justify-between) bg-white p-5 sm:p-10 rounded-xl"
+        class="relative min-h-2xl flex flex-col bg-white p-5 rounded-xl sm:p-10 md:(flex-row justify-between)"
       >
-        <div class="max-w-[75ch] md:mx-0">
+        <div class="max-w-[75ch] w-full md:mx-0">
           <Sotion {blocks} />
         </div>
 
