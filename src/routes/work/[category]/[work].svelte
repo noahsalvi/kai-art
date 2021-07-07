@@ -8,17 +8,17 @@
   import { CategoryAPI } from "../../../api/category-api";
 
   export async function load({ page }) {
-    const workSlug: string = page.params["work"];
-    const categorySlug: string = page.params["workGroup"];
-    const [works, categories] = await Promise.all([
-      WorkAPI.getWorks(),
+    const categorySlug: string = page.params.category;
+    const workSlug: string = page.params.work;
+    const [categories, works] = await Promise.all([
       CategoryAPI.getCategories(),
+      WorkAPI.getWorks(),
     ]);
-    const work = works.find((work) => work.slug === workSlug);
     // Since a work can have multiple categories, we get the one from the url instead
     const category = categories.find(
       (category) => category.slug === categorySlug
     );
+    const work = works.find((work) => work.slug === workSlug);
     const blocks = await sotion.fetchPage(work.id);
 
     return { props: { blocks, work, category } };

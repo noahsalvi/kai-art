@@ -1,16 +1,19 @@
 <script context="module" lang="ts">
   export async function load({ page }) {
+    const categorySlug = page.params.category;
+
     let [categories, works] = await Promise.all([
       CategoryAPI.getCategories(),
       WorkAPI.getWorks(),
     ]);
 
     const category = categories.find(
-      (category) => category.slug === page.params.workGroup
+      (category) => category.slug === categorySlug
     );
+
     works = works.filter((work) => work.category?.includes(category.name));
 
-    return { props: { category, works, slug: page.params.work } };
+    return { props: { category, works } };
   }
 </script>
 
