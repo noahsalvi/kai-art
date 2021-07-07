@@ -59,6 +59,7 @@
 </script>
 
 <slot />
+
 {#if $activated}
   <!-- Overlay -->
   <div

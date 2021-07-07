@@ -5,20 +5,31 @@
   import ImageViewer from "../../../lib/ImageViewer/ImageViewer.svelte";
   import Images from "../../../lib/ImageViewer/Images.svelte";
   import type { Work } from "../../../models/work";
+  import { CategoryAPI } from "../../../api/category-api";
 
   export async function load({ page }) {
     const workSlug: string = page.params["work"];
-    const works = await WorkAPI.getWorks();
+    const categorySlug: string = page.params["workGroup"];
+    const [works, categories] = await Promise.all([
+      WorkAPI.getWorks(),
+      CategoryAPI.getCategories(),
+    ]);
     const work = works.find((work) => work.slug === workSlug);
-
+    // Since a work can have multiple categories, we get the one from the url instead
+    const category = categories.find(
+      (category) => category.slug === categorySlug
+    );
     const blocks = await sotion.fetchPage(work.id);
 
-    return { props: { blocks, work } };
+    return { props: { blocks, work, category } };
   }
 </script>
 
 <script lang="ts">
+  import type { Category } from "../../../models/category";
+
   export let work: Work;
+  export let category: Category;
   export let blocks: string;
 
   const backgroundColor = "bg-background";
@@ -45,8 +56,8 @@
     <div
       class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans sm:px-20"
     >
-      <a href="/work">Werke</a> /
-      <a href=".">{work.category}</a> /
+      <a href="..">Werke</a> /
+      <a href=".">{category.name}</a> /
       <span>{work.name}</span>
     </div>
 
