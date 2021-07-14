@@ -44,7 +44,7 @@
     if (mounted) document.body.classList.remove(backgroundColor);
   });
 
-  const images = work.thumbnail.map((image) => image.url);
+  const images = work?.thumbnail?.map((image) => image.url) ?? [];
 </script>
 
 <svelte:head>
