@@ -51,42 +51,40 @@
   <title>{work.name}</title>
 </svelte:head>
 
-<ImageViewer>
-  <div class="relative h-full max-w-10xl mx-auto flex flex-col">
-    <div
-      class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans sm:px-20"
-    >
-      <a href="..">Werke</a> /
-      <a href=".">{category.name}</a> /
-      <span>{work.name}</span>
-    </div>
-
-    <!-- Decoration Blob -->
-    <div
-      class="absolute left-0 top-25 bg-primary h-50 w-6/10 rounded-xl md:w-2/5"
-    />
-
-    <div class="flex-grow mt-30 mx-3 sm:mx-6">
-      <main
-        class="relative min-h-2xl flex flex-col-reverse bg-white p-5 rounded-xl sm:p-10 md:(flex-row justify-between)"
-      >
-        <div class="max-w-[75ch] w-full md:mx-0">
-          <Sotion {blocks} />
-        </div>
-
-        <div class="m-5" />
-
-        <div class="md:min-w-90 lg:min-w-120" />
-
-        <div
-          class="w-full h-100 md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
-        >
-          <Images {images} />
-        </div>
-      </main>
-    </div>
+<div class="relative h-full max-w-10xl mx-auto flex flex-col">
+  <div
+    class="h-10 max-w-7xl mx-auto px-5 w-full z-10 text-gray font-sans sm:px-20"
+  >
+    <a href="..">Werke</a> /
+    <a href=".">{category.name}</a> /
+    <span>{work.name}</span>
   </div>
-</ImageViewer>
+
+  <!-- Decoration Blob -->
+  <div
+    class="absolute left-0 top-25 bg-primary h-50 w-6/10 rounded-xl md:w-2/5"
+  />
+
+  <div class="flex-grow mt-30 mx-3 sm:mx-6">
+    <main
+      class="relative min-h-2xl flex flex-col-reverse bg-white p-5 rounded-xl sm:p-10 md:(flex-row justify-between)"
+    >
+      <div class="max-w-[75ch] w-full md:mx-0">
+        <Sotion {blocks} />
+      </div>
+
+      <div class="m-5" />
+
+      <div class="md:min-w-90 lg:min-w-120" />
+
+      <div
+        class="w-full h-100 md:(absolute right-10 transform -translate-y-30 h-140 w-90) lg:(h-170 w-120) rounded-lg border-8 border-primary"
+      >
+        <Images {images} />
+      </div>
+    </main>
+  </div>
+</div>
 
 <style global>
   .sotion .no-page-cover-spacer {

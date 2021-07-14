@@ -5,10 +5,11 @@
 </script>
 
 <script lang="ts">
-  import { setContext } from "svelte";
+  import { onMount, setContext } from "svelte";
   import { writable } from "svelte/store";
   import type { Writable } from "svelte/store";
   import { fade } from "svelte/transition";
+  import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
   let activated = writable(false);
   let images: Writable<string[]> = writable([]);
@@ -20,15 +21,21 @@
   setContext(imagesKey, images);
   setContext(indexKey, imageIndex);
 
-  $: if (image) handleSwipes();
+  $: if (image) {
+    handleSwipes();
+    disableBodyScroll(image);
+  }
   $: src = $images[$imageIndex];
   $: hasPrevious = $imageIndex;
   $: hasNext = $imageIndex < $images.length - 1;
+
+  onMount(() => {});
 
   const previousImage = () => (hasPrevious ? $imageIndex-- : $imageIndex);
   const nextImage = () => (hasNext ? $imageIndex++ : $imageIndex);
 
   const close = () => {
+    enableBodyScroll(image);
     $activated = false;
   };
 

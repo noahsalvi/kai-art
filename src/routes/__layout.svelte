@@ -5,6 +5,7 @@
   import NavigationBar from "../lib/NavigationBar/NavigationBar.svelte";
   import WebsiteBorder from "../lib/WebsiteBorder.svelte";
   import { page } from "$app/stores";
+  import ImageViewer from "../lib/ImageViewer/ImageViewer.svelte";
 
   let navigationBarHeight: number;
 
@@ -12,20 +13,17 @@
   $: navigationBarInset = path !== "/" ? navigationBarHeight ?? 0 : 0;
 </script>
 
-<!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
-<WebsiteBorder bind:path>
+<ImageViewer>
+  <!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
   <div bind:clientHeight={navigationBarHeight}>
     {#if path !== "/"}
       <NavigationBar bind:path />
     {/if}
   </div>
-  <div
-    class="overflow-auto"
-    style="height: calc(100% - {navigationBarInset}px);"
-  >
+  <div style="height: calc(100% - {navigationBarInset}px);">
     <slot />
   </div>
-</WebsiteBorder>
+</ImageViewer>
 
 <style global>
   html,
