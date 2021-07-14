@@ -81,7 +81,7 @@
 <!-- Image Container -->
 <div
   bind:this={imageContainerElement}
-  class="relative w-full h-full flex overflow-hidden {$$props.class}"
+  class="relative w-full h-full flex overflow-hidden bg-smoke {$$props.class}"
 >
   {#if !$activated}
     {#each images as src}
