@@ -66,7 +66,11 @@
   </nav>
 
   <section class="h-full flex-grow bg-black relative">
-    <img src="images/flex.png" alt="Kai" class="h-full w-full object-cover" />
+    <img
+      src="images/flex.png"
+      alt="Kai"
+      class="absolute h-full w-full object-cover"
+    />
     <h1
       class="z-20 absolute w-full text-center text-4xl whitespace-nowrap text-smoke
       md:(w-auto top-auto bottom-7 text-7xl right-0)
