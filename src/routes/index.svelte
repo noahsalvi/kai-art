@@ -3,8 +3,6 @@
   import { PERSONALITIES } from "../config";
 
   let showMobileNav = false;
-  let mainHeight: number;
-
   $: mobileTitlePlacement = showMobileNav ? "top-10" : "bottom-48";
 </script>
 
@@ -12,10 +10,10 @@
   <title>Kai Art & Design</title>
 </svelte:head>
 
-<main class="h-full min-h-150 flex relative" bind:clientHeight={mainHeight}>
-  <!-- Mobile slanted top -->
+<main class="h-full min-h-150 flex relative">
   <nav
-    class="w-full absolute bottom-0 z-10 bg-primary md:(relative w-110 h-full) lg:w-120"
+    class="w-full absolute bottom-0 z-10 bg-primary md:(relative w-110 h-full) lg:w-120
+    after:(content absolute w-full h-full bg-primary left-0 top-0 -z-1 transform -skew-y-8 origin-bottom-left)"
   >
     <!-- Hamburger for Mobile Nav -->
     <nav class="mr-10 mb-5 md:hidden">
@@ -67,15 +65,8 @@
     </ul>
   </nav>
 
-  <section
-    class="h-full flex-grow bg-black relative"
-    style="height: {mainHeight}px;"
-  >
-    <img
-      src="images/flex.png"
-      alt="Kai"
-      class="absolute h-full w-full object-cover"
-    />
+  <section class="h-full flex-grow bg-black relative">
+    <img src="images/flex.png" alt="Kai" class="h-full w-full object-cover" />
     <h1
       class="z-20 absolute w-full text-center text-4xl whitespace-nowrap text-smoke
       md:(w-auto top-auto bottom-7 text-7xl right-0)
@@ -87,27 +78,7 @@
   </section>
 </main>
 
-<style global>
-  /* Mobile Nav Slanted Top */
-  nav {
-    position: relative;
-  }
-  nav::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    top: 0;
-    z-index: -1;
-    transform-origin: bottom left;
-    transform: skewY(-8deg);
-  }
-
-  .mobile-footer-navigation-item {
-    @apply bg-white bg-opacity-2 py-3 text-center rounded-xl hover:(bg-opacity-10);
-  }
-
+<style>
   .navigation-item {
     @apply text-smoke block line-through transform transition duration-150 hover:(text-white no-underline text-red scale-120 animate-pulse);
   }

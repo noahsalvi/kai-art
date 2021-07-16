@@ -1,7 +1,9 @@
 import { defineConfig } from "windicss/helpers";
+import { NAVIGATION_BAR_HEIGHT } from "./src/config";
 
 export default defineConfig({
   darkMode: "class",
+  safelist: `h-${NAVIGATION_BAR_HEIGHT}`,
   theme: {
     extend: {
       colors: {

@@ -1,0 +1,6 @@
+/* 100vh on apple touch devices is bigger than window.innerHeight, but using -webkit-fill-available directly, 
+would lead to a problem with chrome browser not having the same logic behind the property */
+.h-page {
+  height: 100vh;
+  max-height: -webkit-fill-available;
+}

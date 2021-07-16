@@ -16,3 +16,9 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .mobile-footer-navigation-item {
+    @apply bg-white bg-opacity-2 py-3 text-center rounded-xl hover:(bg-opacity-10);
+  }
+</style>

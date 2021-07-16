@@ -1,4 +1,5 @@
 <script>
+  import { NAVIGATION_BAR_HEIGHT } from "../../config";
   import NavigationLink from "./NavigationLink.svelte";
 
   export let path;
@@ -9,7 +10,7 @@
 </script>
 
 <nav
-  class="h-24 p-6 px-5 space-x-4 sm:px-20 flex justify-between items-center w-full max-w-7xl mx-auto"
+  class="h-{NAVIGATION_BAR_HEIGHT} p-6 px-5 space-x-4 sm:px-20 flex justify-between items-center w-full max-w-7xl mx-auto"
 >
   <a
     href="/"

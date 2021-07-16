@@ -1,37 +1,25 @@
 <script lang="ts">
-  import "virtual:windi.css";
-  import "../lib/Components.css";
-  import "../lib/Sotion.css";
-  import NavigationBar from "../lib/NavigationBar/NavigationBar.svelte";
-  import WebsiteBorder from "../lib/WebsiteBorder.svelte";
   import { page } from "$app/stores";
-  import ImageViewer from "../lib/ImageViewer/ImageViewer.svelte";
+  import { NAVIGATION_BAR_HEIGHT } from "../config";
 
-  let navigationBarHeight: number;
+  import CSS from "../lib/CSS.svelte";
+  import ImageViewer from "../lib/ImageViewer/ImageViewer.svelte";
+  import NavigationBar from "../lib/NavigationBar/NavigationBar.svelte";
+
+  const navigationBarHeightRem = NAVIGATION_BAR_HEIGHT / 4;
 
   $: path = $page.path;
-  $: navigationBarInset = path !== "/" ? navigationBarHeight ?? 0 : 0;
+  $: showNavigationBar = path !== "/";
+  $: contentHeight = `height: calc(100% - ${
+    showNavigationBar ? navigationBarHeightRem : 0
+  }rem)`;
 </script>
 
 <ImageViewer>
-  <!-- Using flex with flex-grow on the slot doesn't work on safari, that's why we do it programatically 🥲 -->
-  <div bind:clientHeight={navigationBarHeight}>
-    {#if path !== "/"}
-      <NavigationBar bind:path />
-    {/if}
-  </div>
-  <div style="height: calc(100% - {navigationBarInset}px);">
+  {#if showNavigationBar}
+    <NavigationBar bind:path />
+  {/if}
+  <div id="content" style={contentHeight}>
     <slot />
   </div>
 </ImageViewer>
-
-<style global>
-  html,
-  body,
-  #svelte {
-    height: 100%;
-  }
-  .white-border {
-    box-shadow: 0 0 0 0.6em #655;
-  }
-</style>
