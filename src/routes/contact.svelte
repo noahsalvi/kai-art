@@ -16,6 +16,10 @@
   export let blocks;
 </script>
 
+<svelte:head>
+  <title>Kontakt</title>
+</svelte:head>
+
 <div class="relative md:h-full">
   <!-- Decoration Blob -->
   <div class="-z-10 absolute right-0 bottom-0 overflow-hidden">
