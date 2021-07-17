@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-  import { goto } from "$app/navigation";
+  import { goto, prefetch } from "$app/navigation";
   import Page from "../../../lib/Page.svelte";
   import { WorkAPI } from "../../../api/work-api";
   import { CategoryAPI } from "../../../api/category-api";
@@ -27,6 +27,8 @@
 
   export let works: Work[];
   export let category: Category;
+
+  const getWorkRoute = (work: Work) => `${category.slug}/${work.slug}`;
 </script>
 
 <svelte:head>
@@ -50,7 +52,8 @@
     {#each works as work}
       <article
         class="flex flex-col cursor-pointer"
-        on:click={() => goto("/work/" + category.slug + "/" + work.slug)}
+        on:click={() => goto(getWorkRoute(work))}
+        on:mouseover={() => prefetch(getWorkRoute(work))}
       >
         <div
           class="bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition"

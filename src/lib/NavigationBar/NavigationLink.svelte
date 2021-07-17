@@ -12,6 +12,7 @@
 </script>
 
 <a
+  sveltekit:prefetch
   href={path}
   class="dark {hoverTextColor} {isActive
     ? 'underline ' + activeTextColor

@@ -54,13 +54,15 @@
       class="flex flex-col items-center space-y-8 text-3xl -md:hidden lg:text-4xl"
     >
       <li>
-        <a class="navigation-item" href="work">Werke</a>
+        <a class="navigation-item" href="work" sveltekit:prefetch>Werke</a>
       </li>
       <li>
-        <a class="navigation-item" href="portrait">Portrait</a>
+        <a class="navigation-item" href="portrait" sveltekit:prefetch
+          >Portrait</a
+        >
       </li>
       <li>
-        <a class="navigation-item" href="contact">Kontakt</a>
+        <a class="navigation-item" href="contact" sveltekit:prefetch>Kontakt</a>
       </li>
     </ul>
   </nav>
