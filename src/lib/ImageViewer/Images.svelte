@@ -87,7 +87,7 @@
     {#each images as src}
       <img
         {src}
-        class="h-full min-h-full w-full object-cover cursor-pointer"
+        class="h-full min-h-full w-full min-w-full object-cover pointer-events-none"
         style="transform: translateX({$currentOffsetX}%)"
         alt="preview images"
       />
