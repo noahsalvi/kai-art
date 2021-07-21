@@ -30,6 +30,7 @@
   },
   "type": "module",
   "dependencies": {
+    "encoding": "^0.1.13",
     "node-fetch": "^2.6.1",
     "string-hash": "^1.1.3"
   }
