@@ -13,7 +13,7 @@ export async function get({ query }: Request) {
   const image = await getImage(imageName);
 
   if (!image) {
-    fetch(url).then((response) => {
+    await fetch(url).then((response) => {
       createImageFromResponse(imageName, response);
     });
 
