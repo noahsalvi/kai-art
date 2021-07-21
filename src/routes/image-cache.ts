@@ -13,9 +13,15 @@ export async function get({ query }: Request) {
   const image = await getImage(imageName);
 
   if (!image) {
-    await fetch(url).then((response) => {
-      createImageFromResponse(imageName, response);
-    });
+    await fetch(url).then(
+      (response) => {
+        console.log("this worked", response);
+        createImageFromResponse(imageName, response);
+      },
+      (error) => {
+        console.log("this did not work :(", error);
+      }
+    );
 
     // Redirect to original path
     return {
