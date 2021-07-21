@@ -4,6 +4,7 @@
   import { tweened } from "svelte/motion";
   import { activatedKey, imagesKey, indexKey } from "./ImageViewer.svelte";
   import ImagesOverview from "./ImagesOverview.svelte";
+  import cacheImage from "../../utils/cacheImage";
 
   export let images: string[] = [];
 
@@ -16,7 +17,6 @@
   const velocityBonusMargin = 0.5;
 
   let imageContainerElement: HTMLImageElement;
-  let preloadImages = false;
   let currentOffsetX = tweened(0, { duration: 0 });
 
   $: imageSelectedOffsetX = $imageSelectedIndex * -100;
@@ -27,7 +27,6 @@
   }
 
   onMount(() => {
-    preloadImages = true;
     setupHammer();
   });
 
@@ -95,15 +94,6 @@
     <ImagesOverview {images} imageIndex={$imageSelectedIndex} />
   {/if}
 </div>
-
-<!-- Preload all the images -->
-{#if preloadImages}
-  <div class="hidden">
-    {#each images as src}
-      <img {src} alt="" />
-    {/each}
-  </div>
-{/if}
 
 <style>
   img {
