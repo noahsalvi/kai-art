@@ -2,7 +2,7 @@
   "name": "kai-art",
   "version": "0.0.1",
   "scripts": {
-    "dev": " IMAGE_CACHE_HOST='http://localhost:3000' svelte-kit dev --host",
+    "dev": "svelte-kit dev --host",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "lint": "prettier --check .",

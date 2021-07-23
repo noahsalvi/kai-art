@@ -25,7 +25,8 @@ export async function get({ query }: Request) {
 
     // Redirect to original path
     return {
-      status: "302",
+      status: 302,
+
       headers: {
         location: url,
       },
@@ -33,7 +34,7 @@ export async function get({ query }: Request) {
   }
 
   return {
-    status: "200",
+    status: 200,
     headers: {
       // "cache-control": headers.get("cache-control"),
       "content-type": "image/png",
