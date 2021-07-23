@@ -23,7 +23,7 @@ export async function get({ query }: Request) {
       // "cache-control": headers.get("cache-control"),
       "content-type": "image/png",
     },
-    body: JSON.stringify(image),
+    body: image.toString("base64"),
   };
 }
 
