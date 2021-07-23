@@ -13,7 +13,7 @@ export async function get({ query }: Request) {
   const image = await getImage(imageName);
 
   if (!image) {
-    await fetch(url).then(
+    fetch(url).then(
       (response) => {
         console.log("this worked", response);
         createImageFromResponse(imageName, response);
@@ -26,7 +26,6 @@ export async function get({ query }: Request) {
     // Redirect to original path
     return {
       status: 302,
-
       headers: {
         location: url,
       },
