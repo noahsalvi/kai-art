@@ -13,7 +13,7 @@ export async function get({ query }: Request) {
   const image = await getImage(imageName);
 
   if (!image) {
-    fetch(url).then(
+    await fetch(url).then(
       (response) => {
         console.log("caching new image = ", imageName);
         createImageFromResponse(imageName, response);
