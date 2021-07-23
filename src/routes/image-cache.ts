@@ -10,26 +10,11 @@ fs.mkdir(PATH, { recursive: true }, (_) => {});
 export async function get({ query }: Request) {
   const url = recoverNotionURL(query);
   const imageName = getNameFromUrl(url);
-  const image = await getImage(imageName);
+  let image = await getImage(imageName);
 
   if (!image) {
-    await fetch(url).then(
-      (response) => {
-        console.log("caching new image = ", imageName);
-        createImageFromResponse(imageName, response);
-      },
-      (error) => {
-        console.error("Caching failed", error);
-      }
-    );
-
-    // Redirect to original path
-    return {
-      status: 302,
-      headers: {
-        location: url,
-      },
-    };
+    const response = await fetch(url);
+    image = await createImageFromResponse(imageName, response);
   }
 
   return {
@@ -45,9 +30,14 @@ export async function get({ query }: Request) {
 async function createImageFromResponse(name: string, response: Response) {
   const buffer = await response.buffer();
 
-  fs.writeFile(PATH + name, buffer, () => {
-    console.log("Caching new image: " + name);
+  await new Promise<void>((res) => {
+    fs.writeFile(PATH + name, buffer, () => {
+      console.log("Caching new image: " + name);
+      res();
+    });
   });
+
+  return buffer;
 }
 
 async function getImage(name: string) {
