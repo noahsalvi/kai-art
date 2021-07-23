@@ -15,11 +15,11 @@ export async function get({ query }: Request) {
   if (!image) {
     fetch(url).then(
       (response) => {
-        console.log("this worked", response);
+        console.log("caching new image = ", imageName);
         createImageFromResponse(imageName, response);
       },
       (error) => {
-        console.log("this did not work :(", error);
+        console.error("Caching failed", error);
       }
     );
 
