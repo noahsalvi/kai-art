@@ -24,11 +24,10 @@ export async function get({ query }: Request) {
     status: 200,
     headers: {
       // "cache-control": headers.get("cache-control"),
-      "Content-length": contentLength,
-      "Content-type": contentType,
+      "content-length": contentLength,
+      "content-type": contentType,
     },
-    body: image.toString("base64"),
-    isBase64Encoded: true,
+    body: "data:" + contentType + "; base64," + image.toString("base64"),
   };
 }
 
