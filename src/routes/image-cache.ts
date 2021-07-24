@@ -17,13 +17,17 @@ export async function get({ query }: Request) {
     image = await createImageFromResponse(imageName, response);
   }
 
+  const contentType = "image/" + (imageName.split(".")?.[1] ?? "png");
+  const contentLength = image.length;
+
   return {
     status: 200,
     headers: {
       // "cache-control": headers.get("cache-control"),
-      "content-type": "image/png",
+      "content-length": contentLength,
+      "content-type": contentType,
     },
-    body: image.toString("base64"),
+    body: image,
   };
 }
 
