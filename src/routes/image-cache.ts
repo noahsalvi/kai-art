@@ -7,7 +7,7 @@ const PATH = "./cache/images/";
 
 fs.mkdir(PATH, { recursive: true }, (_) => {});
 
-export async function get({ query }: Request): Promise<EndpointOutput> {
+export async function get({ query }: Request) {
   const url = recoverNotionURL(query);
   const imageName = getNameFromUrl(url);
   let image = await getImage(imageName);
@@ -29,7 +29,7 @@ export async function get({ query }: Request): Promise<EndpointOutput> {
       // "content-length": contentLength,
       "content-type": contentType,
     },
-    body: image,
+    body: { image },
   };
 }
 
