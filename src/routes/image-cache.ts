@@ -27,7 +27,7 @@ export async function get({ query }: Request) {
       // "content-length": contentLength,
       "content-type": contentType,
     },
-    body: "data:image/png;base64," + image.toString("base64"),
+    body: { test: "hallo?" },
     isBase64Encoded: true,
   };
 }
