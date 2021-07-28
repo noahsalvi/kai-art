@@ -20,6 +20,8 @@ export async function get({ query }: Request): Promise<EndpointOutput> {
   const contentType = "image/" + (imageName.split(".")?.[1] ?? "png");
   const contentLength = image.length;
 
+  console.log({ image });
+
   return {
     status: 200,
     headers: {
