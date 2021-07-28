@@ -43,9 +43,9 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sveltejs/adapter-netlify@https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify?cf17706b0188382cc6bdb694a5ac14fb93dbeb6c":
+"@sveltejs/adapter-netlify@https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify?d5412ac":
   version "1.0.0-next.25"
-  resolved "https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify?cf17706b0188382cc6bdb694a5ac14fb93dbeb6c#d2d4edce157e02e9b7954abee815f208a2357c33"
+  resolved "https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify?d5412ac#7c4962b5a72291f65aee0776494cba2ea24c332b"
   dependencies:
     "@iarna/toml" "^2.2.5"
     esbuild "^0.12.5"
