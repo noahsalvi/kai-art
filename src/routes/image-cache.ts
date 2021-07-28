@@ -27,7 +27,7 @@ export async function get({ query }: Request) {
       // "content-length": contentLength,
       "content-type": contentType,
     },
-    body: { test: "hallo?" },
+    body: image,
     isBase64Encoded: true,
   };
 }
