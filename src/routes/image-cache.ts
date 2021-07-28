@@ -29,7 +29,7 @@ export async function get({ query }: Request) {
       // "content-length": contentLength,
       "content-type": contentType,
     },
-    body: { image },
+    body: image.toString("base64"),
   };
 }
 
