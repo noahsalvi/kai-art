@@ -9,7 +9,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-netlify": "https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify",
+    "@sveltejs/adapter-netlify": "https://gitpkg.now.sh/noahsalvi/kit/packages/adapter-netlify?cf17706b0188382cc6bdb694a5ac14fb93dbeb6c",
     "@sveltejs/kit": "^1.0.0-next.131",
     "@types/body-scroll-lock": "^2.6.2",
     "@types/hammerjs": "^2.0.39",

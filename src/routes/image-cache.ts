@@ -1,13 +1,13 @@
 import fs from "fs";
 import fetch, { Response } from "node-fetch";
-import type { Request } from "@sveltejs/kit";
+import type { EndpointOutput, Request } from "@sveltejs/kit";
 import hash from "string-hash";
 
 const PATH = "./cache/images/";
 
 fs.mkdir(PATH, { recursive: true }, (_) => {});
 
-export async function get({ query }: Request) {
+export async function get({ query }: Request): Promise<EndpointOutput> {
   const url = recoverNotionURL(query);
   const imageName = getNameFromUrl(url);
   let image = await getImage(imageName);
@@ -28,7 +28,6 @@ export async function get({ query }: Request) {
       "content-type": contentType,
     },
     body: image,
-    isBase64Encoded: true,
   };
 }
 
