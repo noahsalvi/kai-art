@@ -3,7 +3,7 @@ import fetch, { Response } from "node-fetch";
 import type { EndpointOutput, Request } from "@sveltejs/kit";
 import hash from "string-hash";
 
-const PATH = "./cache/images/";
+const PATH = "cache/images/";
 
 fs.mkdir(PATH, { recursive: true }, (_) => {});
 
@@ -19,8 +19,6 @@ export async function get({ query }: Request) {
 
   const contentType = "image/" + (imageName.split(".")?.[1] ?? "png");
   const contentLength = image.length;
-
-  console.log({ image });
 
   return {
     status: 200,
