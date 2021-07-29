@@ -11,9 +11,9 @@ export class CategoryAPI {
       const newCategories: Category[] = await sotion.fetchTable(
         this.categoryID
       );
-      newCategories.forEach((category) =>
-        category.thumbnail.map((img) => (img.url = cacheImage(img.url)))
-      );
+      // newCategories.forEach((category) =>
+      //   category.thumbnail.map((img) => (img.url = cacheImage(img.url)))
+      // );
       this.categories = newCategories;
     }
 

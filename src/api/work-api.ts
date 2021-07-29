@@ -9,9 +9,9 @@ export class WorkAPI {
   static async getWorks() {
     if (!this.works) {
       const newWorks: Work[] = await sotion.fetchTable(this.workID);
-      newWorks.forEach((work) =>
-        work.thumbnail?.map((img) => (img.url = cacheImage(img.url)))
-      );
+      // newWorks.forEach((work) =>
+      //   work.thumbnail?.map((img) => (img.url = cacheImage(img.url)))
+      // );
       this.works = newWorks;
     }
 

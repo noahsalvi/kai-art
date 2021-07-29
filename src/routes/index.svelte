@@ -12,8 +12,7 @@
 
 <main class="h-full min-h-150 flex relative">
   <nav
-    class="w-full absolute bottom-0 z-10 bg-primary md:(relative w-110 h-full) lg:w-120
-    after:(content absolute w-full h-full bg-primary left-0 top-0 -z-1 transform -skew-y-8 origin-bottom-left)"
+    class="slanted-top w-full absolute bottom-0 z-10 bg-primary md:(relative w-110 h-full) lg:w-120"
   >
     <!-- Hamburger for Mobile Nav -->
     <nav class="mr-10 mb-5 md:hidden">
@@ -85,6 +84,19 @@
 </main>
 
 <style>
+  /* Mobile Nav Slanted Top */
+  .slanted-top::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    top: 0;
+    z-index: -1;
+    transform-origin: bottom left;
+    transform: skewY(-8deg);
+  }
+
   .navigation-item {
     @apply text-smoke block line-through transform transition duration-150 hover:(text-white no-underline text-red scale-120 animate-pulse);
   }
